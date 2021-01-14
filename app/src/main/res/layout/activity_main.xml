@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/jugador"
+        android:id="@+id/Njugador"
         android:layout_width="140dp"
         android:layout_height="38dp"
         android:layout_marginStart="176dp"
@@ -70,7 +70,7 @@
         app:layout_constraintTop_toBottomOf="@+id/titleMain" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/Avatar"
         android:layout_width="44dp"
         android:layout_height="45dp"
         android:layout_marginStart="88dp"
@@ -78,7 +78,7 @@
         android:layout_marginTop="83dp"
         android:layout_marginEnd="44dp"
         android:layout_marginRight="44dp"
-        app:layout_constraintEnd_toStartOf="@+id/jugador"
+        app:layout_constraintEnd_toStartOf="@+id/Njugador"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleMain"
         app:srcCompat="@drawable/hombre" />
