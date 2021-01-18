@@ -19,9 +19,13 @@ public class JuegoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
         ImageView tablero = findViewById(R.id.tablero);
-        BitmapDrawable drawable = (BitmapDrawable) tablero.getDrawable();
-        Bitmap bitmap = drawable.getBitmap();
-        int pixel=bitmap.getPixel(862,45);
+        Bitmap bmp = ((BitmapDrawable)tablero.getDrawable()).getBitmap();
+        bmp=bmp.copy(Bitmap.Config.ARGB_8888,true);
+        TextView tvw = findViewById(R.id.textView2);
+        TextView tvh = findViewById(R.id.textView3);
+        tvw.setText(bmp.getWidth());
+        tvh.setText(bmp.getHeight());
+        int pixel=bmp.getPixel(862,45);
         TextView textView = findViewById(R.id.textView);
         textView.setText(String.format("#%02X%02X%02X", Color.red(pixel), Color.green(pixel),Color.blue(pixel)));
     }
