@@ -16,7 +16,7 @@ public class JuegoActivity extends AppCompatActivity {
 
     Bitmap bmp;
     ImageView tablero, cursor;
-    private static final int angulo_casilla = 10;
+    private static final int radio = 495;
     int ndado=2;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -63,12 +63,16 @@ public class JuegoActivity extends AppCompatActivity {
     private void MoverCursorDerecha() {
         int fX;
         int fY;
-        int angulo = angulo_casilla*ndado;
         int cX = (int) cursor.getX();
         int cY = (int) cursor.getY();
-        double d = Math.sin(angulo);
-        fX = (int) (cX + d*Math.cos(angulo));
-        fY = (int) (cY + d*Math.sin(angulo));
+        if (cY<bmp.getHeight()/2)
+            fX = (int) (cX + 64*Math.cos(10*ndado));
+        else
+            fX = (int) (cX - 64*Math.cos(10*ndado));
+        if (cX<bmp.getWidth()/2)
+            fY = (int) (cY - 64*Math.sin(10*ndado));
+        else
+            fY = (int) (cY + 64*Math.sin(10*ndado));
         cursor.setX(fX);
         cursor.setY(fY);
     }
@@ -76,12 +80,16 @@ public class JuegoActivity extends AppCompatActivity {
     private void MoverCursorIzquierda() {
         int fX;
         int fY;
-        int angulo = angulo_casilla*ndado;
         int cX = (int) cursor.getX();
         int cY = (int) cursor.getY();
-        double d = Math.sin(angulo) * 10;
-        fX = (int) (cX - d*Math.cos(angulo));
-        fY = (int) (cY + d*Math.sin(angulo));
+        if (cY<bmp.getHeight()/2)
+            fX = (int) (cX - 64*Math.cos(10*ndado));
+        else
+            fX = (int) (cX + 64*Math.cos(10*ndado));
+        if (cX<bmp.getWidth()/2)
+            fY = (int) (cY + 64*Math.sin(10*ndado));
+        else
+            fY = (int) (cY - 64*Math.sin(10*ndado));
         cursor.setX(fX);
         cursor.setY(fY);
     }
