@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.Random;
 
@@ -36,8 +35,6 @@ public class MainActivity extends AppCompatActivity {
                 AddPlayer();
             }
         });
-
-
     }
 
     public void AddPlayer(){
@@ -48,6 +45,11 @@ public class MainActivity extends AppCompatActivity {
         EditText nombrePlayer = new EditText(this);
 
         avatar.setImageResource(avatares[i1]);
+    }
+
+    public void IniciarPartida(View v){
+        Intent intent = new Intent(this, JuegoActivity.class);
+        startActivity(intent);
     }
 }
 
