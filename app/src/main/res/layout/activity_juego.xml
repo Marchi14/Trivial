@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/tablero" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bIzquierda"
         android:layout_width="wrap_content"
         android:layout_height="66dp"
         android:layout_marginTop="44dp"
@@ -32,7 +32,7 @@
         tools:visibility="visible" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/bDerecha"
         android:layout_width="wrap_content"
         android:layout_height="66dp"
         android:text="Button"
@@ -40,20 +40,9 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/bIzquierda"
         app:layout_constraintVertical_bias="0.223"
         tools:visibility="visible" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.617" />
 
     <ImageView
         android:id="@+id/cursor"
@@ -68,5 +57,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.089"
         app:srcCompat="@drawable/cursor" />
+
+    <ImageView
+        android:id="@+id/dado"
+        android:layout_width="44dp"
+        android:layout_height="42dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tablero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/tablero"
+        app:layout_constraintTop_toTopOf="@+id/tablero"
+        app:layout_constraintVertical_bias="0.498"
+        app:srcCompat="@drawable/dado1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
