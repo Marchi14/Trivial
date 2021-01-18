@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/tablero"
-        android:layout_width="0dp"
-        android:layout_height="412dp"
+        android:layout_width="wrap_content"
+        android:layout_height="1080px"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -19,7 +19,7 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="271dp"
+        android:layout_width="wrap_content"
         android:layout_height="66dp"
         android:layout_marginTop="44dp"
         android:text="Button"
@@ -28,21 +28,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tablero"
-        app:layout_constraintVertical_bias="0.187"
+        app:layout_constraintVertical_bias="0.172"
         tools:visibility="visible" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="271dp"
+        android:layout_width="wrap_content"
         android:layout_height="66dp"
-        android:layout_marginBottom="64dp"
         android:text="Button"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button"
-        app:layout_constraintVertical_bias="0.853"
+        app:layout_constraintVertical_bias="0.223"
         tools:visibility="visible" />
 
     <TextView
@@ -56,28 +55,18 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.617" />
 
-    <TextView
-        android:id="@+id/textView2"
+    <ImageView
+        android:id="@+id/cursor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.367"
+        android:adjustViewBounds="false"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="@+id/tablero"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.26"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.615" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.527"
-        app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.616" />
+        app:layout_constraintVertical_bias="0.089"
+        app:srcCompat="@drawable/cursor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

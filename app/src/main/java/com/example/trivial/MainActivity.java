@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         addjugador=(Button) findViewById(R.id.AddJugador);
         start=(Button) findViewById(R.id.Start);
         load=(Button) findViewById(R.id.Load);
