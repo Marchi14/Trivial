@@ -17,6 +17,7 @@ public class JuegoActivity extends AppCompatActivity {
 
     Bitmap bmp;
     ImageView tablero, cursor;
+    float distancia = (float) (2*(495 * Math.sin(Math.toRadians(10))));
     int ndado=1;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -61,8 +62,6 @@ public class JuegoActivity extends AppCompatActivity {
     //}
 
     private void MoverCursorDerecha() {
-        int radio = 495;
-        float distancia = (float) (2*(radio * Math.sin(Math.toRadians(10*ndado))));
         int cX = (int) cursor.getX();
         int cY = (int) cursor.getY();
         int fX = (int) (cX - (Math.cos(-10*ndado) * distancia));
@@ -72,8 +71,6 @@ public class JuegoActivity extends AppCompatActivity {
     }
 
     private void MoverCursorIzquierda() {
-        int radio = 495;
-        float distancia = (float) (2*(radio * Math.sin(Math.toRadians(10*ndado))));
         int cX = (int) cursor.getX();
         int cY = (int) cursor.getY();
         int fX = (int) (cX - (Math.cos(10*ndado) * distancia));
