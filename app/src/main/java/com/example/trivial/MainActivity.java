@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -22,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         addjugador=(Button) findViewById(R.id.AddJugador);
         start=(Button) findViewById(R.id.Start);
         load=(Button) findViewById(R.id.Load);
@@ -35,6 +35,20 @@ public class MainActivity extends AppCompatActivity {
                 AddPlayer();
             }
         });
+
+        start.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IniciarPartida();
+            }
+        });
+
+
+    }
+
+    private void IniciarPartida() {
+        Intent intent = new Intent(this,JuegoActivity.class);
+        startActivity(intent);
     }
 
     public void AddPlayer(){
@@ -45,11 +59,6 @@ public class MainActivity extends AppCompatActivity {
         EditText nombrePlayer = new EditText(this);
 
         avatar.setImageResource(avatares[i1]);
-    }
-
-    public void IniciarPartida(View v){
-        Intent intent = new Intent(this, JuegoActivity.class);
-        startActivity(intent);
     }
 }
 
