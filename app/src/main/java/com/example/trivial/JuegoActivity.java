@@ -4,6 +4,7 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -16,8 +17,7 @@ public class JuegoActivity extends AppCompatActivity {
 
     Bitmap bmp;
     ImageView tablero, cursor;
-    private static final int radio = 495;
-    int ndado=2;
+    int ndado=1;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
@@ -61,41 +61,27 @@ public class JuegoActivity extends AppCompatActivity {
     //}
 
     private void MoverCursorDerecha() {
-        int fX;
-        int fY;
+        int radio = 495;
         int cX = (int) cursor.getX();
         int cY = (int) cursor.getY();
-        if (cY<bmp.getHeight()/2)
-            fX = (int) (cX + 64*Math.cos(10*ndado));
-        else
-            fX = (int) (cX - 64*Math.cos(10*ndado));
-        if (cX<bmp.getWidth()/2)
-            fY = (int) (cY - 64*Math.sin(10*ndado));
-        else
-            fY = (int) (cY + 64*Math.sin(10*ndado));
+        int fX = (int) (cX - (Math.cos(-10*ndado) * (2*(radio * Math.sin((10*ndado)/2)))));
+        int fY = (int) (cY - (Math.sin(-10*ndado) * (2*(radio * Math.sin((10*ndado)/2)))));
         cursor.setX(fX);
         cursor.setY(fY);
     }
 
     private void MoverCursorIzquierda() {
-        int fX;
-        int fY;
+        int radio = 495;
         int cX = (int) cursor.getX();
         int cY = (int) cursor.getY();
-        if (cY<bmp.getHeight()/2)
-            fX = (int) (cX - 64*Math.cos(10*ndado));
-        else
-            fX = (int) (cX + 64*Math.cos(10*ndado));
-        if (cX<bmp.getWidth()/2)
-            fY = (int) (cY + 64*Math.sin(10*ndado));
-        else
-            fY = (int) (cY - 64*Math.sin(10*ndado));
+        int fX = (int) (cX - (Math.cos(10*ndado) * (2*(radio * Math.sin((10*ndado)/2)))));
+        int fY = (int) (cY - (Math.sin(10*ndado) * (2*(radio * Math.sin((10*ndado)/2)))));
         cursor.setX(fX);
         cursor.setY(fY);
     }
 
     private void GetTypeofQuestions(Button b) {
-        int pixel=bmp.getPixel((int) (cursor.getX() + (cursor.getWidth()/2)),(int) cursor.getY() + (cursor.getHeight()/2));
+        int pixel=bmp.getPixel((int) (cursor.getX() + cursor.getWidth()/2),(int) cursor.getY() + cursor.getHeight()/2);
         b.setBackgroundColor(pixel);
     }
 }
