@@ -62,20 +62,22 @@ public class JuegoActivity extends AppCompatActivity {
 
     private void MoverCursorDerecha() {
         int radio = 495;
+        float distancia = (float) (2*(radio * Math.sin((10*ndado)/2)));
         int cX = (int) cursor.getX();
         int cY = (int) cursor.getY();
-        int fX = (int) (cX - (Math.cos(-10*ndado) * (2*(radio * Math.sin((10*ndado)/2)))));
-        int fY = (int) (cY - (Math.sin(-10*ndado) * (2*(radio * Math.sin((10*ndado)/2)))));
+        int fX = (int) (cX - (Math.cos(-10*ndado) * distancia));
+        int fY = (int) (cY - (Math.sin(-10*ndado) * distancia));
         cursor.setX(fX);
         cursor.setY(fY);
     }
 
     private void MoverCursorIzquierda() {
         int radio = 495;
+        float distancia = (float) (2*(radio * Math.sin((10*ndado)/2)));
         int cX = (int) cursor.getX();
         int cY = (int) cursor.getY();
-        int fX = (int) (cX - (Math.cos(10*ndado) * (2*(radio * Math.sin((10*ndado)/2)))));
-        int fY = (int) (cY - (Math.sin(10*ndado) * (2*(radio * Math.sin((10*ndado)/2)))));
+        int fX = (int) (cX - (Math.cos(10*ndado) * distancia));
+        int fY = (int) (cY - (Math.sin(10*ndado) * distancia));
         cursor.setX(fX);
         cursor.setY(fY);
     }
