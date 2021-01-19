@@ -11,13 +11,14 @@
     <Button
         android:id="@+id/Load"
         android:layout_width="208dp"
-        android:layout_height="41dp"
+        android:layout_height="40dp"
         android:layout_marginStart="117dp"
         android:layout_marginLeft="117dp"
         android:layout_marginEnd="131dp"
         android:layout_marginRight="131dp"
         android:layout_marginBottom="48dp"
         android:text="CARGAR PARTIDA"
+        app:backgroundTint="#804E05"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.333"
@@ -26,7 +27,7 @@
     <Button
         android:id="@+id/Start"
         android:layout_width="208dp"
-        android:layout_height="48dp"
+        android:layout_height="40dp"
         android:layout_marginStart="156dp"
         android:layout_marginLeft="156dp"
         android:layout_marginEnd="162dp"
@@ -34,14 +35,16 @@
         android:layout_marginBottom="8dp"
         android:onClick="IniciarPartida"
         android:text="EMPEZAR PARTIDA"
+        app:backgroundTint="#804E05"
+        app:iconTint="#804E05"
         app:layout_constraintBottom_toTopOf="@+id/Load"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.46"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/AddJugador"
-        android:layout_width="207dp"
+        android:layout_width="208dp"
         android:layout_height="40dp"
         android:layout_marginStart="160dp"
         android:layout_marginLeft="160dp"
@@ -49,42 +52,10 @@
         android:layout_marginRight="158dp"
         android:layout_marginBottom="8dp"
         android:text="AÑADIR JUGADOR"
+        app:backgroundTint="#804E05"
         app:layout_constraintBottom_toTopOf="@+id/Start"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/Njugador1"
-        android:layout_width="140dp"
-        android:layout_height="38dp"
-        android:layout_marginStart="176dp"
-        android:layout_marginLeft="176dp"
-        android:layout_marginTop="52dp"
-        android:layout_marginEnd="95dp"
-        android:layout_marginRight="95dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Player 1"
-        android:textColor="#FBF9F9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleMain" />
-
-    <ImageView
-        android:id="@+id/Avatar1"
-        android:layout_width="44dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginLeft="88dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="44dp"
-        android:layout_marginRight="44dp"
-        app:layout_constraintEnd_toStartOf="@+id/Njugador1"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleMain"
-        app:srcCompat="@drawable/hombre" />
 
     <TextView
         android:id="@+id/titleMain"
@@ -103,5 +74,134 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/FrameP5"
+        android:layout_width="233dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginRight="93dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FrameP4">
+
+    </FrameLayout>
+
+    <EditText
+        android:id="@+id/Njugador2"
+        android:layout_width="140dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginLeft="176dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginRight="95dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Player 2"
+        android:textColor="#FBF9F9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Njugador1" />
+
+    <ImageView
+        android:id="@+id/Avatar1"
+        android:layout_width="44dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        app:layout_constraintEnd_toStartOf="@+id/Njugador1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleMain"
+        app:srcCompat="@drawable/hombre" />
+
+    <ImageView
+        android:id="@+id/Avatar2"
+        android:layout_width="44dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="44dp"
+        android:layout_marginRight="44dp"
+        app:layout_constraintEnd_toStartOf="@+id/Njugador1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Avatar1"
+        app:srcCompat="@drawable/mujer" />
+
+    <FrameLayout
+        android:id="@+id/FrameP4"
+        android:layout_width="233dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginRight="93dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FrameP3">
+
+    </FrameLayout>
+
+    <EditText
+        android:id="@+id/Njugador1"
+        android:layout_width="140dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="176dp"
+        android:layout_marginLeft="176dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="95dp"
+        android:layout_marginRight="95dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Player 1"
+        android:textColor="#FBF9F9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleMain" />
+
+    <FrameLayout
+        android:id="@+id/FrameP3"
+        android:layout_width="233dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginRight="93dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Avatar2">
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/FrameP6"
+        android:layout_width="233dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginLeft="85dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="93dp"
+        android:layout_marginRight="93dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/FrameP5">
+
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
