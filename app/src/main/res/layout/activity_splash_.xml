@@ -16,7 +16,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="9dp"
         android:layout_marginRight="9dp"
-        android:fontFamily="@font/aclonica1"
+        android:fontFamily="@font/aclonica"
         android:text="TRIVIAL PURSUIT"
         android:textColor="#FFFFFF"
         android:textSize="36sp"
