@@ -1,5 +1,6 @@
 package com.example.trivial;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -15,12 +16,13 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-   private Button addjugador, start, load;
-   private ImageView avatar,avatar1;
-   private EditText nombrePlayer, nombrePlayer1;
+   private Button addjugador, start, load, deletejugador;
+   private ImageView avatar1,avatar2, avatar3, avatar4,avatar5,avatar6;
+   private EditText nombrePlayer1, nombrePlayer2, nombrePlayer3,nombrePlayer4,nombrePlayer5,nombrePlayer6;
    private ConstraintLayout contenedor;
 
     int [] avatares= {R.drawable.hombre, R.drawable.mujer};
+    int contadorP=2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,15 +31,103 @@ public class MainActivity extends AppCompatActivity {
 
         contenedor=(ConstraintLayout) findViewById(R.id.ContenedorP);
         addjugador=(Button) findViewById(R.id.AddJugador);
+        deletejugador=(Button) findViewById(R.id.DeletePlayer);
         start=(Button) findViewById(R.id.Start);
         load=(Button) findViewById(R.id.Load);
         avatar1=(ImageView) findViewById(R.id.Avatar1);
+        avatar2=(ImageView) findViewById(R.id.Avatar2);
+        avatar3=(ImageView) findViewById(R.id.Avatar3);
+        avatar4=(ImageView) findViewById(R.id.Avatar4);
+        avatar5=(ImageView) findViewById(R.id.Avatar5);
+        avatar6=(ImageView) findViewById(R.id.Avatar6);
         nombrePlayer1=(EditText) findViewById(R.id.Njugador1);
+        nombrePlayer2=(EditText) findViewById(R.id.Njugador2);
+        nombrePlayer3=(EditText) findViewById(R.id.Njugador3);
+        nombrePlayer4=(EditText) findViewById(R.id.Njugador4);
+        nombrePlayer5=(EditText) findViewById(R.id.Njugador5);
+        nombrePlayer6=(EditText) findViewById(R.id.Njugador6);
 
+        Ocultarjugadores();
+
+
+
+        //CREACIÓN DE NUEVOS JUGADORES
         addjugador.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AddPlayer();
+
+               switch (contadorP){
+                   case 2:
+                       avatar3.setVisibility(View.VISIBLE);
+                       nombrePlayer3.setVisibility(View.VISIBLE);
+                       deletejugador.setVisibility(View.VISIBLE);
+                       deletejugador.setEnabled(true);
+                       contadorP++;
+                       break;
+                   case 3:
+                       avatar4.setVisibility(View.VISIBLE);
+                       nombrePlayer4.setVisibility(View.VISIBLE);
+                       deletejugador.setEnabled(true);
+                       contadorP++;
+                       break;
+                   case 4:
+                       avatar5.setVisibility(View.VISIBLE);
+                       nombrePlayer5.setVisibility(View.VISIBLE);
+                       deletejugador.setEnabled(true);
+                       contadorP++;
+                       break;
+                   case 5:
+                       avatar6.setVisibility(View.VISIBLE);
+                       nombrePlayer6.setVisibility(View.VISIBLE);
+                       deletejugador.setEnabled(true);
+                       addjugador.setEnabled(false);
+                       contadorP++;
+                       break;
+                   case 6:
+                       break;
+               }
+
+            }
+        });
+
+        //BORRADO DE JUGADORES
+        deletejugador.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switch (contadorP){
+                    case 2:
+                        addjugador.setEnabled(true);
+                        deletejugador.setEnabled(false);
+                        break;
+                    case 3:
+                        avatar3.setVisibility(View.INVISIBLE);
+                        nombrePlayer3.setVisibility(View.INVISIBLE);
+                        addjugador.setEnabled(true);
+                        deletejugador.setEnabled(false);
+                        contadorP--;
+                        break;
+                    case 4:
+                        avatar4.setVisibility(View.INVISIBLE);
+                        nombrePlayer4.setVisibility(View.INVISIBLE);
+                        addjugador.setEnabled(true);
+                        deletejugador.setEnabled(true);
+                        contadorP--;
+                        break;
+                    case 5:
+                        avatar5.setVisibility(View.INVISIBLE);
+                        nombrePlayer5.setVisibility(View.INVISIBLE);
+                        deletejugador.setEnabled(true);
+                        addjugador.setEnabled(true);
+                        contadorP--;
+                        break;
+                    case 6:
+                        avatar6.setVisibility(View.INVISIBLE);
+                        nombrePlayer6.setVisibility(View.INVISIBLE);
+                        deletejugador.setEnabled(true);
+                        addjugador.setEnabled(true);
+                        contadorP--;
+                        break;
+                }
             }
         });
 
@@ -56,20 +146,22 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void AddPlayer(){
-        Random r1=new Random();
-        int i1= r1.nextInt(2);
 
-        ImageView avatar = new ImageView(this);
-        EditText nombrePlayer = new EditText(this);
+    //METODO QUE OCULTA LOS JUGADORES 3-6 Y DESHABILITA EL BOTÓN ELIMINAR JUGADOR AL INICIO DE ESTA ACTIVITY
+    private void Ocultarjugadores(){
+        avatar3.setVisibility(View.INVISIBLE);
+        nombrePlayer3.setVisibility(View.INVISIBLE);
 
-        avatar.setImageResource(avatares[i1]);
-        avatar.setY(62);
-        avatar.setX(88);
-        nombrePlayer.setY(62);
-        nombrePlayer.setX(176);
+        avatar4.setVisibility(View.INVISIBLE);
+        nombrePlayer4.setVisibility(View.INVISIBLE);
 
-        contenedor.addView(avatar1,44, 45);
-        contenedor.addView(nombrePlayer,140,38);
+        avatar5.setVisibility(View.INVISIBLE);
+        nombrePlayer5.setVisibility(View.INVISIBLE);
+
+        avatar6.setVisibility(View.INVISIBLE);
+        nombrePlayer6.setVisibility(View.INVISIBLE);
+
+        deletejugador.setEnabled(false);
     }
+
 }
