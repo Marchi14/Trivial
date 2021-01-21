@@ -17,7 +17,7 @@ public class JuegoActivity extends AppCompatActivity {
 
     Bitmap bmp;
     ImageView tablero, cursor;
-    float distancia = (float) (2*(495 * Math.sin(Math.toRadians(10))));
+    float angulo = ((360/6)/6.5f);
     int ndado=1;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -61,22 +61,48 @@ public class JuegoActivity extends AppCompatActivity {
 //
     //}
 
+    /*private void Derecha(){
+        if (cY < bmp.getHeight()/2){
+            fX = (float) (cX - (Math.cos(10*ndado) * distancia));
+            newX = centerX + (point2x-centerX)*Math.cos(x) - (point2y-centerY)*Math.sin(x);
+
+newY = centerY + (point2x-centerX)*Math.sin(x) + (point2y-centerY)*Math.cos(x);
+        }
+    }
+    */
+
     private void MoverCursorDerecha() {
         int cX = (int) cursor.getX();
         int cY = (int) cursor.getY();
-        int fX = (int) (cX - (Math.cos(-10*ndado) * distancia));
-        int fY = (int) (cY - (Math.sin(-10*ndado) * distancia));
-        cursor.setX(fX);
-        cursor.setY(fY);
+        float fX;
+        float fY;
+        if (cY < bmp.getHeight()/2)
+            fX = (float) ((cX-540)*Math.cos(Math.toRadians(angulo))-(cY-540)*Math.sin(Math.toRadians(angulo)));
+        else
+            fX = (float) ((cX-540)*Math.cos(Math.toRadians(angulo))+(cY-540)*Math.sin(Math.toRadians(angulo)));
+        if(cX < bmp.getWidth()/2)
+            fY = (float) (((cX-540)*(-Math.sin(Math.toRadians(angulo))))+(cY-540)*Math.cos(Math.toRadians(angulo)));
+        else
+            fY = (float) ((cX-540)*Math.sin(Math.toRadians(angulo))+(cY-540)*Math.cos(Math.toRadians(angulo)));
+        cursor.setX(fX + 540);
+        cursor.setY(fY + 540);
     }
 
     private void MoverCursorIzquierda() {
         int cX = (int) cursor.getX();
         int cY = (int) cursor.getY();
-        int fX = (int) (cX - (Math.cos(10*ndado) * distancia));
-        int fY = (int) (cY - (Math.sin(10*ndado) * distancia));
-        cursor.setX(fX);
-        cursor.setY(fY);
+        float fX;
+        float fY;
+        if (cY < bmp.getHeight()/2)
+            fX = (float) ((cX-540)*Math.cos(Math.toRadians(angulo))+(cY-540)*Math.sin(Math.toRadians(angulo)));
+        else
+            fX = (float) ((cX-540)*Math.cos(Math.toRadians(angulo))-(cY-540)*Math.sin(Math.toRadians(angulo)));
+        if(cX < bmp.getWidth()/2)
+            fY = (float) ((cX-540)*Math.sin(Math.toRadians(angulo))+(cY-540)*Math.cos(Math.toRadians(angulo)));
+        else
+            fY = (float) (((cX-540)*(-Math.sin(Math.toRadians(angulo))))+(cY-540)*Math.cos(Math.toRadians(angulo)));
+        cursor.setX(fX + 540);
+        cursor.setY(fY + 540);
     }
 
     private void GetTypeofQuestions(Button b) {
