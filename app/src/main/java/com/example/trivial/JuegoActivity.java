@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 
@@ -17,7 +19,10 @@ public class JuegoActivity extends AppCompatActivity {
 
     Bitmap bmp;
     ImageView tablero, cursor;
-    float angulo = ((360/6)/6.5f);
+    Button bI,bD;
+    int cX,cY;
+    Point[] points = new Point[2];
+    int angulo = ((360/6)/7);
     int ndado=1;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -27,86 +32,102 @@ public class JuegoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_juego);
         tablero = findViewById(R.id.tablero);
         cursor = findViewById(R.id.cursor);
-        Button bI = findViewById(R.id.bIzquierda);
-        Button bD = findViewById(R.id.bDerecha);
+        bI = findViewById(R.id.bIzquierda);
+        bD = findViewById(R.id.bDerecha);
         bmp = ((BitmapDrawable)tablero.getDrawable()).getBitmap();
         bmp=bmp.copy(Bitmap.Config.ARGB_8888,true);
         ImageView dado = findViewById(R.id.dado);
 
-       // dado.setOnTouchListener(new View.OnTouchListener() {
-       //     @Override
-       //     public boolean onTouch(View v, MotionEvent event) {
-       //         dadoRNG();
-       //     }
-       // });
-//
+        dado.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                return false;
+            }
+        });
+
         bI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoverCursorIzquierda();
-                GetTypeofQuestions(bI);
+                MoverIzquierda();
+                DetectarCasillas(bI,bD);
             }
         });
 
         bD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                MoverCursorDerecha();
-                GetTypeofQuestions(bD);
+                MoverDerecha();
+                DetectarCasillas(bI,bD);
             }
         });
     }
 
-    //private void dadoRNG() {
-//
-    //}
+    private void MoverIzquierda() {
+        cursor.setX(points[0].x);
+        cursor.setY(points[0].y);
+    }
 
-    /*private void Derecha(){
-        if (cY < bmp.getHeight()/2){
-            fX = (float) (cX - (Math.cos(10*ndado) * distancia));
-            newX = centerX + (point2x-centerX)*Math.cos(x) - (point2y-centerY)*Math.sin(x);
+    private void MoverDerecha() {
+        cursor.setX(points[1].x);
+        cursor.setY(points[1].y);
+    }
 
-newY = centerY + (point2x-centerX)*Math.sin(x) + (point2y-centerY)*Math.cos(x);
+    private void DetectarCasillas(Button bI,Button bD){
+        Point Izq;
+        Point Der;
+        Izq=Izquierda(cX,cY);
+        Der=Derecha(cX,cY);
+        int pixel=bmp.getPixel(Izq.x,Izq.y);
+        bI.setBackgroundColor(pixel);
+        pixel=bmp.getPixel(Der.x,Der.y);
+        bD.setBackgroundColor(pixel);
+        points[0]=Izq;
+        points[1]=Der;
+    }
+
+
+    private Point Derecha(int cX,int cY) {
+        int fX;
+        int fY=cY;
+        int h = bmp.getWidth()/2;
+        if (cY < h) {
+            fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) - (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
+            if (cX < h)
+                fY = (int) (((cX - h) * (-Math.sin(Math.toRadians(angulo * ndado)))) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
+            else
+                fY = (int) ((cX - h) * Math.sin(Math.toRadians(angulo * ndado)) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
         }
-    }
-    */
-
-    private void MoverCursorDerecha() {
-        int cX = (int) cursor.getX();
-        int cY = (int) cursor.getY();
-        float fX;
-        float fY;
-        if (cY < bmp.getHeight()/2)
-            fX = (float) ((cX-540)*Math.cos(Math.toRadians(angulo))-(cY-540)*Math.sin(Math.toRadians(angulo)));
-        else
-            fX = (float) ((cX-540)*Math.cos(Math.toRadians(angulo))+(cY-540)*Math.sin(Math.toRadians(angulo)));
-        if(cX < bmp.getWidth()/2)
-            fY = (float) (((cX-540)*(-Math.sin(Math.toRadians(angulo))))+(cY-540)*Math.cos(Math.toRadians(angulo)));
-        else
-            fY = (float) ((cX-540)*Math.sin(Math.toRadians(angulo))+(cY-540)*Math.cos(Math.toRadians(angulo)));
-        cursor.setX(fX + 540);
-        cursor.setY(fY + 540);
+        else{
+            fX = (int) ((cX-h)*Math.cos(Math.toRadians(angulo*ndado))+(cY-h)*Math.sin(Math.toRadians(angulo*ndado)));
+            if (cX < h)
+                fY = (int) ((cX - h) * Math.sin(Math.toRadians(angulo * ndado)) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
+            else
+                fY = (int) (((cX - h) * (-Math.sin(Math.toRadians(angulo * ndado)))) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
+        }
+        fX += h;
+        fY += h;
+        return new Point(fX,fY);
     }
 
-    private void MoverCursorIzquierda() {
-        int cX = (int) cursor.getX();
-        int cY = (int) cursor.getY();
-        float fX;
-        float fY;
-        if (cY < bmp.getHeight()/2)
-            fX = (float) ((cX-540)*Math.cos(Math.toRadians(angulo))+(cY-540)*Math.sin(Math.toRadians(angulo)));
-        else
-            fX = (float) ((cX-540)*Math.cos(Math.toRadians(angulo))-(cY-540)*Math.sin(Math.toRadians(angulo)));
-        if(cX < bmp.getWidth()/2)
-            fY = (float) ((cX-540)*Math.sin(Math.toRadians(angulo))+(cY-540)*Math.cos(Math.toRadians(angulo)));
-        else
-            fY = (float) (((cX-540)*(-Math.sin(Math.toRadians(angulo))))+(cY-540)*Math.cos(Math.toRadians(angulo)));
-        cursor.setX(fX + 540);
-        cursor.setY(fY + 540);
-    }
-
-    private void GetTypeofQuestions(Button b) {
-        int pixel=bmp.getPixel((int) (cursor.getX() + cursor.getWidth()/2),(int) cursor.getY() + cursor.getHeight()/2);
-        b.setBackgroundColor(pixel);
+    private Point Izquierda(int cX, int cY) {
+        int fX;
+        int fY;
+        int h = bmp.getWidth() / 2;
+        if (cY < h) {
+            fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) + (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
+            if (cX < h)
+                fY = (int) ((cX - h) * Math.sin(Math.toRadians(angulo * ndado)) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
+            else
+                fY = (int) (((cX - h) * (-Math.sin(Math.toRadians(angulo * ndado)))) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
+        } else {
+            fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) - (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
+            if (cX < h)
+                fY = (int) (((cX - h) * (-Math.sin(Math.toRadians(angulo * ndado)))) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
+            else
+                fY = (int) ((cX - h) * Math.sin(Math.toRadians(angulo * ndado)) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
+        }
+        fX += h;
+        fY += h;
+        return new Point(fX, fY);
     }
 }
