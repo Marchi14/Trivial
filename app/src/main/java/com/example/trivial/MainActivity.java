@@ -145,18 +145,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void IniciarPartida() {
         Intent intent = new Intent(this,JuegoActivity.class);
-        Bitmap a1 =((BitmapDrawable)avatar1.getDrawable()).getBitmap();
-        Bitmap a2 =((BitmapDrawable)avatar2.getDrawable()).getBitmap();
-        Bitmap a3 =((BitmapDrawable)avatar3.getDrawable()).getBitmap();
-        Bitmap a4 =((BitmapDrawable)avatar4.getDrawable()).getBitmap();
-        Bitmap a5 =((BitmapDrawable)avatar5.getDrawable()).getBitmap();
-        Bitmap a6 =((BitmapDrawable)avatar6.getDrawable()).getBitmap();
-
-
-        intent.putExtra("Iplayer1",a1);
-        intent.putExtra("player1", String.valueOf(nombrePlayer1));
-        intent.putExtra("Iplayer2",a2);
-        intent.putExtra("player2", String.valueOf(nombrePlayer2));
+    //    Bitmap a1 =((BitmapDrawable)avatar1.getDrawable()).getBitmap();
+    //    Bitmap a2 =((BitmapDrawable)avatar2.getDrawable()).getBitmap();
+    //    Bitmap a3 =((BitmapDrawable)avatar3.getDrawable()).getBitmap();
+    //    Bitmap a4 =((BitmapDrawable)avatar4.getDrawable()).getBitmap();
+    //    Bitmap a5 =((BitmapDrawable)avatar5.getDrawable()).getBitmap();
+    //    Bitmap a6 =((BitmapDrawable)avatar6.getDrawable()).getBitmap();
+//
+//
+    //    intent.putExtra("Iplayer1",a1);
+    //    intent.putExtra("player1", String.valueOf(nombrePlayer1));
+    //    intent.putExtra("Iplayer2",a2);
+    //    intent.putExtra("player2", String.valueOf(nombrePlayer2));
 
 
         startActivity(intent);

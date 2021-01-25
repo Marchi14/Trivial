@@ -89,9 +89,9 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         cY= (int) cursor.getY();
         Izq = Izquierda(cX, cY);
         Der = Derecha(cX, cY);
-        int pixel = bmp.getPixel(Izq.x, Izq.y);
+        int pixel = bmp.getPixel(Izq.x+cursor.getWidth()/2, Izq.y+cursor.getHeight()/2);
         bI.setBackgroundColor(pixel);
-        pixel = bmp.getPixel(Der.x, Der.y);
+        pixel = bmp.getPixel(Der.x+cursor.getWidth()/2, Der.y+cursor.getHeight()/2);
         bD.setBackgroundColor(pixel);
         points[0] = Izq;
         points[1] = Der;
