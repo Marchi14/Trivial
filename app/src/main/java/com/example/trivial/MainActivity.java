@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -143,7 +145,71 @@ public class MainActivity extends AppCompatActivity {
 
     private void IniciarPartida() {
         Intent intent = new Intent(this,JuegoActivity.class);
-        startActivity(intent);
+        Bitmap a1 =((BitmapDrawable)avatar1.getDrawable()).getBitmap();
+        Bitmap a2 =((BitmapDrawable)avatar2.getDrawable()).getBitmap();
+        Bitmap a3 =((BitmapDrawable)avatar3.getDrawable()).getBitmap();
+        Bitmap a4 =((BitmapDrawable)avatar4.getDrawable()).getBitmap();
+        Bitmap a5 =((BitmapDrawable)avatar5.getDrawable()).getBitmap();
+        Bitmap a6 =((BitmapDrawable)avatar6.getDrawable()).getBitmap();
+
+
+        switch (contadorP){
+            case 2:
+                    intent.putExtra("Iplayer1",a1);
+                    intent.putExtra("player1", String.valueOf(nombrePlayer1));
+                    intent.putExtra("Iplayer2",a2);
+                    intent.putExtra("player2", String.valueOf(nombrePlayer2));
+                    startActivity(intent);
+                break;
+            case 3:
+                intent.putExtra("Iplayer1",a1);
+                intent.putExtra("player1", String.valueOf(nombrePlayer1));
+                intent.putExtra("Iplayer2",a2);
+                intent.putExtra("player2", String.valueOf(nombrePlayer2));
+                intent.putExtra("Iplayer2",a3);
+                intent.putExtra("player2", String.valueOf(nombrePlayer3));
+                startActivity(intent);
+                break;
+            case 4:
+                intent.putExtra("Iplayer1",a1);
+                intent.putExtra("player1", String.valueOf(nombrePlayer1));
+                intent.putExtra("Iplayer2",a2);
+                intent.putExtra("player2", String.valueOf(nombrePlayer2));
+                intent.putExtra("Iplayer2",a3);
+                intent.putExtra("player2", String.valueOf(nombrePlayer3));
+                intent.putExtra("Iplayer2",a4);
+                intent.putExtra("player2", String.valueOf(nombrePlayer4));
+                startActivity(intent);
+                break;
+            case 5:
+                intent.putExtra("Iplayer1",a1);
+                intent.putExtra("player1", String.valueOf(nombrePlayer1));
+                intent.putExtra("Iplayer2",a2);
+                intent.putExtra("player2", String.valueOf(nombrePlayer2));
+                intent.putExtra("Iplayer2",a3);
+                intent.putExtra("player2", String.valueOf(nombrePlayer3));
+                intent.putExtra("Iplayer2",a4);
+                intent.putExtra("player2", String.valueOf(nombrePlayer4));
+                intent.putExtra("Iplayer2",a5);
+                intent.putExtra("player2", String.valueOf(nombrePlayer5));
+                startActivity(intent);
+                break;
+            case 6:
+                intent.putExtra("Iplayer1",a1);
+                intent.putExtra("player1", String.valueOf(nombrePlayer1));
+                intent.putExtra("Iplayer2",a2);
+                intent.putExtra("player2", String.valueOf(nombrePlayer2));
+                intent.putExtra("Iplayer2",a3);
+                intent.putExtra("player2", String.valueOf(nombrePlayer3));
+                intent.putExtra("Iplayer2",a4);
+                intent.putExtra("player2", String.valueOf(nombrePlayer4));
+                intent.putExtra("Iplayer2",a5);
+                intent.putExtra("player2", String.valueOf(nombrePlayer5));
+                intent.putExtra("Iplayer2",a6);
+                intent.putExtra("player2", String.valueOf(nombrePlayer6));
+                startActivity(intent);
+                break;
+        }
     }
 
 
