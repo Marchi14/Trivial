@@ -4,12 +4,15 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.Notification;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Message;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
@@ -42,6 +45,15 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         bmp = bmp.copy(Bitmap.Config.ARGB_8888, true);
         dado = findViewById(R.id.dado);
         dado.setOnTouchListener(this);
+
+        //conexion base de datos
+        Sqlite dbHelper = new Sqlite(this);
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        if(db!=null){
+
+        }else{
+
+        }
 
         bI.setOnClickListener(new View.OnClickListener() {
             @Override
