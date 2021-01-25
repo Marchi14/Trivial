@@ -27,6 +27,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     Point[] points = new Point[2];
     int angulo = ((360 / 6) / 8);
     int ndado = 1;
+    boolean tirada=true;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
@@ -46,6 +47,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
             @Override
             public void onClick(View v) {
                 MoverIzquierda();
+                tirada=true;
             }
         });
 
@@ -53,6 +55,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
             @Override
             public void onClick(View v) {
                 MoverDerecha();
+                tirada=true;
             }
         });
     }
@@ -141,31 +144,33 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        if (event.getAction() == MotionEvent.ACTION_DOWN) {
-            Random rng = new Random();
-            ndado = rng.nextInt(6)+1;
-            switch (ndado) {
-                case 1:
-                    dado.setImageResource(R.drawable.dado1);
-                    break;
-                case 2:
-                    dado.setImageResource(R.drawable.dado2);
-                    break;
-                case 3:
-                    dado.setImageResource(R.drawable.dado3);
-                    break;
-                case 4:
-                    dado.setImageResource(R.drawable.dado4);
-                    break;
-                case 5:
-                    dado.setImageResource(R.drawable.dado5);
-                    break;
-                case 6:
-                    dado.setImageResource(R.drawable.dado6);
-                    break;
+        if (tirada)
+            if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                Random rng = new Random();
+                ndado = rng.nextInt(6)+1;
+                switch (ndado) {
+                    case 1:
+                        dado.setImageResource(R.drawable.dado1);
+                        break;
+                    case 2:
+                        dado.setImageResource(R.drawable.dado2);
+                        break;
+                    case 3:
+                        dado.setImageResource(R.drawable.dado3);
+                        break;
+                    case 4:
+                        dado.setImageResource(R.drawable.dado4);
+                        break;
+                    case 5:
+                        dado.setImageResource(R.drawable.dado5);
+                        break;
+                    case 6:
+                        dado.setImageResource(R.drawable.dado6);
+                        break;
+                }
+                DetectarCasillas(bI, bD);
+                tirada=false;
             }
-            DetectarCasillas(bI, bD);
-        }
         return false;
     }
 }
