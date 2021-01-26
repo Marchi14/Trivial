@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/trivial"
         android:supportsRtl="true"
         android:theme="@style/Theme.Trivial">
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".PreguntaActivity"></activity>
+        <activity android:name=".MainActivity" />
         <activity android:name=".JuegoActivity" />
         <activity android:name=".Splash_Activity">
             <intent-filter>
