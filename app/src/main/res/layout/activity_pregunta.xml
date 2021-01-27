@@ -6,4 +6,67 @@
     android:layout_height="match_parent"
     tools:context=".PreguntaActivity">
 
+    <Button
+        android:id="@+id/Resp1"
+        android:layout_width="256dp"
+        android:layout_height="63dp"
+        android:text="Resp1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Resp2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Resp2"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Resp2"
+        android:layout_width="256dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="32dp"
+        android:text="Resp2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Resp3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Resp3"
+        app:layout_constraintTop_toBottomOf="@+id/Resp1"
+        app:layout_constraintVertical_bias="0.012" />
+
+    <Button
+        android:id="@+id/Resp3"
+        android:layout_width="256dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="4dp"
+        android:text="Resp3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/Resp4"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/Resp4"
+        app:layout_constraintTop_toBottomOf="@+id/Resp2"
+        app:layout_constraintVertical_bias="0.106" />
+
+    <Button
+        android:id="@+id/Resp4"
+        android:layout_width="256dp"
+        android:layout_height="63dp"
+        android:text="Resp4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Resp3"
+        app:layout_constraintVertical_bias="0.346" />
+
+    <TextView
+        android:id="@+id/Pregunta"
+        android:layout_width="0dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="132dp"
+        android:gravity="center"
+        android:text="PREGUNTA"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/Resp1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
