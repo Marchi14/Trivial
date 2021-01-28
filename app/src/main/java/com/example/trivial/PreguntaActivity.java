@@ -2,6 +2,7 @@ package com.example.trivial;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.widget.Button;
@@ -25,16 +26,21 @@ public class PreguntaActivity extends AppCompatActivity {
 
         //conexion base de datos
         Sqlite dbHelper = new Sqlite(this);
-        db = dbHelper.getWritableDatabase();
 
-        String enunciado, r1,r2,r3,r4;
+        Pregunta();
 
 
     }
 
     private void Pregunta(){
+        String[] campos = new String[] {"tipo", "enunciado"};
+        Cursor c=db.rawQuery("SELECT Tipo, enunciado FROM pregunta",null);
 
-
+        if (c.moveToFirst()) {
+                String tipo= c.getString(0);
+                String enunciado = c.getString(1);
+                pregunta.setText(tipo+enunciado);
+        }
 
     }
 }
