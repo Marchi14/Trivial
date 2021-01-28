@@ -40,7 +40,7 @@ public class Sqlite extends SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
-        db.execSQL("INSERT INTO pregunta VALUES (1, 'HISTORIA', '#5FBFCD', 'DE DONDE ES NAPOLEÓN?')");
+        db.execSQL("INSERT INTO pregunta VALUES (1, 'HISTORIA', 'DE DONDE ES NAPOLEÓN?')");
         db.execSQL("INSERT INTO repuesta VALUES(1,1,'FRANCIA',1)");
         db.execSQL("INSERT INTO repuesta VALUES(2,1,'ALEMANIA',1)");
         db.execSQL("INSERT INTO repuesta VALUES(3,1,'BELGICA',1)");

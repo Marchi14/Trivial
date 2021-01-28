@@ -122,14 +122,10 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         int pixel = bmp.getPixel(Izq.x+cursor.getWidth()/2, Izq.y+cursor.getHeight()/2);
         if (GetTypeofPregunta(pixel) != null)
             bI.setText(GetTypeofPregunta(pixel));
-        else
-            bI.setText("Volver a Tirar");
         bI.setBackgroundColor(pixel);
         pixel = bmp.getPixel(Der.x+cursor.getWidth()/2, Der.y+cursor.getHeight()/2);
         if (GetTypeofPregunta(pixel) != null)
             bD.setText(GetTypeofPregunta(pixel));
-        else
-            bD.setText("Volver a Tirar");
         bD.setBackgroundColor(pixel);
         points[0] = Izq;
         points[1] = Der;
@@ -231,7 +227,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         String color = String. format("#%02X%02X%02X", r, g, b);
         for (Colores colorE : Colores.values())
             if (color.equals(colorE.getColor())){
-
+                return colorE.getTipo();
             }
         return null;
     }
