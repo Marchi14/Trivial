@@ -20,7 +20,7 @@ import java.util.Random;
 public class MainActivity extends AppCompatActivity {
    private Button addjugador, start, load, deletejugador;
    private ImageView avatar1,avatar2, avatar3, avatar4,avatar5,avatar6;
-   private EditText nombrePlayer1, nombrePlayer2, nombrePlayer3,nombrePlayer4,nombrePlayer5,nombrePlayer6;
+   public EditText nombrePlayer1, nombrePlayer2, nombrePlayer3,nombrePlayer4,nombrePlayer5,nombrePlayer6;
    private ConstraintLayout contenedor;
 
     int [] avatares= {R.drawable.hombre, R.drawable.mujer};
@@ -152,9 +152,11 @@ public class MainActivity extends AppCompatActivity {
         Bitmap a5 =((BitmapDrawable)avatar5.getDrawable()).getBitmap();
         Bitmap a6 =((BitmapDrawable)avatar6.getDrawable()).getBitmap();
 
-        intent.putExtra("player1", String.valueOf(nombrePlayer1));
-
-        intent.putExtra("player2", String.valueOf(nombrePlayer2));
+        //RECOGEMOS LOS NOMBRES DE LOS JUGADORES PARA MANDARLOS AL JUEGO ACTIVITY
+        String n1= String.valueOf(nombrePlayer1.getText());
+        String n2= String.valueOf(nombrePlayer2.getText());
+        intent.putExtra("player1", n1);
+        intent.putExtra("player2", n2);
 
 
         startActivity(intent);

@@ -11,5 +11,6 @@ public class PreguntaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pregunta);
 
+
     }
 }

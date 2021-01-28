@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
@@ -19,6 +20,7 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.Random;
 
@@ -26,7 +28,8 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
 
     Bitmap bmp;
     ImageView tablero, cursor, dado;
-    Button bI, bD;
+    Button bI, bD, bElegirP;
+    TextView nombre_Jugador, n_Jugador2;
     int cX, cY;
     Point[] points = new Point[2];
     int angulo = ((360 / 6) / 8);
@@ -42,10 +45,22 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         cursor = findViewById(R.id.cursor);
         bI = findViewById(R.id.bIzquierda);
         bD = findViewById(R.id.bDerecha);
+        bElegirP=findViewById(R.id.bElegirPregunta);
         bmp = ((BitmapDrawable) tablero.getDrawable()).getBitmap();
         bmp = bmp.copy(Bitmap.Config.ARGB_8888, true);
         dado = findViewById(R.id.dado);
         dado.setOnTouchListener(this);
+
+        //PARA LOS DATOS DE LOS JUGADORES
+        nombre_Jugador=(TextView)findViewById(R.id.Nombre_Jugador);
+        n_Jugador2=(TextView)findViewById(R.id.n_Jugador2);
+        Bundle b = getIntent().getExtras();
+        String n1=(String)b.get("player1");
+        String n2=(String)b.get("player2");
+        nombre_Jugador.setText(n1);
+        n_Jugador2.setText(n2);
+
+
         //conexion base de datos
         Sqlite dbHelper = new Sqlite(this);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
@@ -70,6 +85,18 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 tirada=true;
             }
         });
+
+        bElegirP.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IniciarPrgunta();
+            }
+        });
+    }
+
+    private void IniciarPrgunta(){
+        Intent intent=new Intent(this, PreguntaActivity.class);
+        startActivity(intent);
     }
 
     private void MoverIzquierda() {
