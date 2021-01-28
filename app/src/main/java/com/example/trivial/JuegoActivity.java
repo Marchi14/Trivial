@@ -94,16 +94,16 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         Izq = Izquierda(cX, cY);
         Der = Derecha(cX, cY);
         int pixel = bmp.getPixel(Izq.x+cursor.getWidth()/2, Izq.y+cursor.getHeight()/2);
-        //if (GetTypeofPregunta(pixel) != null)
-        //    bI.setText(GetTypeofPregunta(pixel));
-        //else
-        //    bI.setText("Volver a Tirar");
+        if (GetTypeofPregunta(pixel) != null)
+            bI.setText(GetTypeofPregunta(pixel));
+        else
+            bI.setText("Volver a Tirar");
         bI.setBackgroundColor(pixel);
         pixel = bmp.getPixel(Der.x+cursor.getWidth()/2, Der.y+cursor.getHeight()/2);
-        //if (GetTypeofPregunta(pixel) != null)
-        //    bD.setText(GetTypeofPregunta(pixel));
-        //else
-        //    bD.setText("Volver a Tirar");
+        if (GetTypeofPregunta(pixel) != null)
+            bD.setText(GetTypeofPregunta(pixel));
+        else
+            bD.setText("Volver a Tirar");
         bD.setBackgroundColor(pixel);
         points[0] = Izq;
         points[1] = Der;
