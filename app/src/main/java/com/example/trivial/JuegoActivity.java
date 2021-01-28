@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
@@ -29,9 +31,10 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     Button bI, bD;
     int cX, cY;
     Point[] points = new Point[2];
-    int angulo = ((360 / 6) / 8);
+    float angulo = 360 / 48;
     int ndado = 1;
     boolean tirada=true;
+    SQLiteDatabase db;
 
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
@@ -48,17 +51,15 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         dado.setOnTouchListener(this);
         //conexion base de datos
         Sqlite dbHelper = new Sqlite(this);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        if(db!=null){
-
-        }else{
-
-        }
+        db = dbHelper.getWritableDatabase();
 
         bI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MoverIzquierda();
+                if (bI.getText() != "Volver a Tirar") {
+
+                }
                 tirada=true;
             }
         });
@@ -67,6 +68,9 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
             @Override
             public void onClick(View v) {
                 MoverDerecha();
+                if (bD.getText() != "Volver a Tirar") {
+
+                }
                 tirada=true;
             }
         });
@@ -90,8 +94,16 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         Izq = Izquierda(cX, cY);
         Der = Derecha(cX, cY);
         int pixel = bmp.getPixel(Izq.x+cursor.getWidth()/2, Izq.y+cursor.getHeight()/2);
+        if (GetTypeofPregunta(pixel) != null)
+            bI.setText(GetTypeofPregunta(pixel));
+        else
+            bI.setText("Volver a Tirar");
         bI.setBackgroundColor(pixel);
         pixel = bmp.getPixel(Der.x+cursor.getWidth()/2, Der.y+cursor.getHeight()/2);
+        if (GetTypeofPregunta(pixel) != null)
+            bD.setText(GetTypeofPregunta(pixel));
+        else
+            bD.setText("Volver a Tirar");
         bD.setBackgroundColor(pixel);
         points[0] = Izq;
         points[1] = Der;
@@ -100,7 +112,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
 
     private Point Derecha(int cX, int cY) {
         int fX;
-        int fY = cY;
+        int fY;
         int h = bmp.getWidth() / 2;
         if (cY < h) {
             if (cX < h){
@@ -117,8 +129,8 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 fY = (int) (((cX - h) * (-Math.sin(Math.toRadians(angulo * ndado)))) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
             }
             else{
-                fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) - (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
-                fY = (int) ((cX - h) * Math.sin(Math.toRadians(angulo * ndado)) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
+                fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) + (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
+                fY = (int) (((cX - h) * (-Math.sin(Math.toRadians(angulo * ndado)))) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
             }
         }
         fX += h;
@@ -145,8 +157,8 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 fY = (int) ((cX - h) * Math.sin(Math.toRadians(angulo * ndado)) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
             }
             else{
-                fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) + (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
-                fY = (int) (((cX - h) * (-Math.sin(Math.toRadians(angulo * ndado)))) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
+                fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) - (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
+                fY = (int) ((cX - h) * Math.sin(Math.toRadians(angulo * ndado)) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
             }
         }
         fX += h;
@@ -158,8 +170,8 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     public boolean onTouch(View v, MotionEvent event) {
         if (tirada)
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                Random rng = new Random();
-                ndado = rng.nextInt(6)+1;
+                //Random rng = new Random();
+                //ndado = rng.nextInt(6)+1;
                 switch (ndado) {
                     case 1:
                         dado.setImageResource(R.drawable.dado1);
@@ -184,5 +196,23 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 tirada=false;
             }
         return false;
+    }
+
+    private String GetTypeofPregunta(int pixel) {
+        int r = Color.red(pixel);
+        int b = Color.blue(pixel);
+        int g = Color.green(pixel);
+        String color = String. format("#%02X%02X%02X", r, g, b);
+        for (Colores colorE : Colores.values())
+            if (color.equals(colorE.getColor())){
+                Cursor c = db.rawQuery("SELECT DISTINCT(Tipo) FROM pregunta WHERE color = '" + color + "';",null);
+                if (c.moveToFirst()){
+                    do {
+                        return c.getString(0);
+                    } while(c.moveToNext());
+                }
+                c.close();
+            }
+        return null;
     }
 }
