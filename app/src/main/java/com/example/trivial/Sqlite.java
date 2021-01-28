@@ -17,7 +17,7 @@ public class Sqlite extends SQLiteOpenHelper{
             "id_player INTEGER REFERENCES _id, posicion NUMBER)";
 
     private static final String TABLE_PREGUNTA_CREATE="CREATE TABLE pregunta(id_pregunta INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "Tipo TEXT, color TEXT, enunciado TEXT)";
+            "Tipo TEXT, enunciado TEXT)";
 
     private static final String TABLE_RESPUESTA_CREATE="CREATE TABLE respuesta(id_respuesta INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "id_preg INTEGER REFERENCES id_pregunta, texto TEXT, respuestaCorrecta BOOLEAN)";
@@ -40,5 +40,10 @@ public class Sqlite extends SQLiteOpenHelper{
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+        db.execSQL("INSERT INTO pregunta VALUES (1, 'HISTORIA', '#5FBFCD', 'DE DONDE ES NAPOLEÓN?')");
+        db.execSQL("INSERT INTO repuesta VALUES(1,1,'FRANCIA',1)");
+        db.execSQL("INSERT INTO repuesta VALUES(2,1,'ALEMANIA',1)");
+        db.execSQL("INSERT INTO repuesta VALUES(3,1,'BELGICA',1)");
+        db.execSQL("INSERT INTO repuesta VALUES(4,1,'ITALIA',1)");
     }
 }
