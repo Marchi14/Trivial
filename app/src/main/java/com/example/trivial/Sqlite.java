@@ -17,7 +17,7 @@ public class Sqlite extends SQLiteOpenHelper{
             "id_player INTEGER REFERENCES _id, posicion NUMBER)";
 
     private static final String TABLE_PREGUNTA_CREATE="CREATE TABLE pregunta(id_pregunta INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "Tipo TEXT, color TEXT, enunciado TEXT)";
+            "Tipo TEXT, enunciado TEXT)";
 
     private static final String TABLE_RESPUESTA_CREATE="CREATE TABLE respuesta(id_respuesta INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "id_preg INTEGER REFERENCES id_pregunta, texto TEXT, respuestaCorrecta BOOLEAN)";
