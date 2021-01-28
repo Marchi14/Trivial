@@ -31,7 +31,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     Button bI, bD;
     int cX, cY;
     Point[] points = new Point[2];
-    int angulo = ((360 / 6) / 7);
+    float angulo = 360 / 48;
     int ndado = 1;
     boolean tirada=true;
     SQLiteDatabase db;
@@ -68,7 +68,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
             @Override
             public void onClick(View v) {
                 MoverDerecha();
-                if (bI.getText() != "Volver a Tirar") {
+                if (bD.getText() != "Volver a Tirar") {
 
                 }
                 tirada=true;
@@ -112,7 +112,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
 
     private Point Derecha(int cX, int cY) {
         int fX;
-        int fY = cY;
+        int fY;
         int h = bmp.getWidth() / 2;
         if (cY < h) {
             if (cX < h){
@@ -170,8 +170,8 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     public boolean onTouch(View v, MotionEvent event) {
         if (tirada)
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
-                Random rng = new Random();
-                ndado = rng.nextInt(6)+1;
+                //Random rng = new Random();
+                //ndado = rng.nextInt(6)+1;
                 switch (ndado) {
                     case 1:
                         dado.setImageResource(R.drawable.dado1);
