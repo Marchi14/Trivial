@@ -31,23 +31,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        contenedor=(ConstraintLayout) findViewById(R.id.ContenedorP);
-        addjugador=(Button) findViewById(R.id.AddJugador);
-        deletejugador=(Button) findViewById(R.id.DeletePlayer);
-        start=(Button) findViewById(R.id.Start);
-        load=(Button) findViewById(R.id.Load);
-        avatar1=(ImageView) findViewById(R.id.Avatar1);
-        avatar2=(ImageView) findViewById(R.id.Avatar2);
-        avatar3=(ImageView) findViewById(R.id.Avatar3);
-        avatar4=(ImageView) findViewById(R.id.Avatar4);
-        avatar5=(ImageView) findViewById(R.id.Avatar5);
-        avatar6=(ImageView) findViewById(R.id.Avatar6);
-        nombrePlayer1=(EditText) findViewById(R.id.Njugador1);
-        nombrePlayer2=(EditText) findViewById(R.id.Njugador2);
-        nombrePlayer3=(EditText) findViewById(R.id.Njugador3);
-        nombrePlayer4=(EditText) findViewById(R.id.Njugador4);
-        nombrePlayer5=(EditText) findViewById(R.id.Njugador5);
-        nombrePlayer6=(EditText) findViewById(R.id.Njugador6);
+        contenedor = findViewById(R.id.ContenedorP);
+        addjugador = findViewById(R.id.AddJugador);
+        deletejugador = findViewById(R.id.DeletePlayer);
+        start = findViewById(R.id.Start);
+        load = findViewById(R.id.Load);
+        avatar1 = findViewById(R.id.Avatar1);
+        avatar2 = findViewById(R.id.Avatar2);
+        avatar3 = findViewById(R.id.Avatar3);
+        avatar4 = findViewById(R.id.Avatar4);
+        avatar5 = findViewById(R.id.Avatar5);
+        avatar6 = findViewById(R.id.Avatar6);
+        nombrePlayer1 = findViewById(R.id.Njugador1);
+        nombrePlayer2 = findViewById(R.id.Njugador2);
+        nombrePlayer3 = findViewById(R.id.Njugador3);
+        nombrePlayer4 = findViewById(R.id.Njugador4);
+        nombrePlayer5 = findViewById(R.id.Njugador5);
+        nombrePlayer6 = findViewById(R.id.Njugador6);
 
         Ocultarjugadores();
 
