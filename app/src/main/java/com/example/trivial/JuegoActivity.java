@@ -34,11 +34,12 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     Button bI, bD, bPregunta;
     int cX, cY;
     Point[] points = new Point[2];
-    float angulo = 360 / 48;
+    int angulo = (int) (360 / 48 + 1.875);
     int ndado = 1;
     boolean tirada=true;
     SQLiteDatabase db;
 
+    @SuppressLint("ClickableViewAccessibility")
     @RequiresApi(api = Build.VERSION_CODES.Q)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,9 +75,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
             @Override
             public void onClick(View v) {
                 MoverIzquierda();
-                if (bI.getText() != "Volver a Tirar") {
-
-                }
                 tirada=true;
             }
         });
@@ -85,9 +83,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
             @Override
             public void onClick(View v) {
                 MoverDerecha();
-                if (bD.getText() != "Volver a Tirar") {
-
-                }
                 tirada=true;
             }
         });
@@ -125,16 +120,16 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         Izq = Izquierda(cX, cY);
         Der = Derecha(cX, cY);
         int pixel = bmp.getPixel(Izq.x+cursor.getWidth()/2, Izq.y+cursor.getHeight()/2);
-        if (GetTypeofPregunta(pixel) != null)
-            bI.setText(GetTypeofPregunta(pixel));
-        else
-            bI.setText("Volver a Tirar");
+        //if (GetTypeofPregunta(pixel) != null)
+        //    bI.setText(GetTypeofPregunta(pixel));
+        //else
+        //    bI.setText("Volver a Tirar");
         bI.setBackgroundColor(pixel);
         pixel = bmp.getPixel(Der.x+cursor.getWidth()/2, Der.y+cursor.getHeight()/2);
-        if (GetTypeofPregunta(pixel) != null)
-            bD.setText(GetTypeofPregunta(pixel));
-        else
-            bD.setText("Volver a Tirar");
+        //if (GetTypeofPregunta(pixel) != null)
+        //    bD.setText(GetTypeofPregunta(pixel));
+        //else
+        //    bD.setText("Volver a Tirar");
         bD.setBackgroundColor(pixel);
         points[0] = Izq;
         points[1] = Der;
@@ -144,7 +139,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     private Point Derecha(int cX, int cY) {
         int fX;
         int fY;
-        int h = bmp.getWidth() / 2;
+        int h = (bmp.getWidth() / 2) - cursor.getWidth()/2;
         if (cY < h) {
             if (cX < h){
                 fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) - (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));

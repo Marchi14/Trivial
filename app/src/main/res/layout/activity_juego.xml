@@ -47,15 +47,15 @@
     <ImageView
         android:id="@+id/cursor"
         android:layout_width="12dp"
-        android:layout_height="13dp"
+        android:layout_height="12dp"
         android:adjustViewBounds="false"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/tablero"
         app:layout_constraintEnd_toEndOf="@+id/tablero"
-        app:layout_constraintHorizontal_bias="0.959"
+        app:layout_constraintHorizontal_bias="0.34"
         app:layout_constraintStart_toStartOf="@+id/tablero"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.494"
+        app:layout_constraintVertical_bias="0.050000012"
         app:srcCompat="@drawable/cursor" />
 
     <ImageView
