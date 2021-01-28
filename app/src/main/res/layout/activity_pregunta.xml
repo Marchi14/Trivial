@@ -30,6 +30,8 @@
         android:layout_marginTop="36dp"
         android:layout_marginEnd="19dp"
         android:layout_marginRight="19dp"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#8E8C8C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/TxPregunta" />
@@ -43,6 +45,8 @@
         android:layout_marginTop="13dp"
         android:layout_marginEnd="19dp"
         android:layout_marginRight="19dp"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#8E8C8C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bRes1" />
@@ -56,6 +60,8 @@
         android:layout_marginTop="13dp"
         android:layout_marginEnd="19dp"
         android:layout_marginRight="19dp"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#8E8C8C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bRes2" />
@@ -69,6 +75,8 @@
         android:layout_marginTop="13dp"
         android:layout_marginEnd="19dp"
         android:layout_marginRight="19dp"
+        android:textColor="#FFFFFF"
+        app:backgroundTint="#8E8C8C"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bRes3" />
