@@ -27,9 +27,9 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     Button bI, bD, bPregunta;
     int cX, cY;
     Point[] points = new Point[2];
-    int angulo = (int) (360 / 48 + 1.875);
+    int angulo = 360 / 48;
     int ndado = 1;
-    boolean tirada=true;
+    boolean tirada=true, quesito=false;
 
     @SuppressLint("ClickableViewAccessibility")
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -83,6 +83,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         bPregunta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 IniciarPregunta();
             }
         });
@@ -95,6 +96,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         bD.setEnabled(false);
         bPregunta.setEnabled(false);
         Intent intent = new Intent(this,PreguntaActivity.class);
+        intent.putExtra("Tema",GetTypeofPregunta(bmp.getPixel((int) (cursor.getX()+cursor.getWidth()/2), (int) (cursor.getY()+cursor.getHeight()/2))));
         startActivity(intent);
     }
 
@@ -115,73 +117,57 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         cY= (int) cursor.getY();
         Izq = Izquierda(cX, cY);
         Der = Derecha(cX, cY);
-        int pixel = bmp.getPixel(Izq.x+cursor.getWidth()/2, Izq.y+cursor.getHeight()/2);
-        if (GetTypeofPregunta(pixel) != null)
-            bI.setText(GetTypeofPregunta(pixel));
-        bI.setBackgroundColor(pixel);
-        pixel = bmp.getPixel(Der.x+cursor.getWidth()/2, Der.y+cursor.getHeight()/2);
-        if (GetTypeofPregunta(pixel) != null)
-            bD.setText(GetTypeofPregunta(pixel));
-        bD.setBackgroundColor(pixel);
+        //int pixel = bmp.getPixel(Izq.x+cursor.getWidth()/2, Izq.y+cursor.getHeight()/2);
+        //if (GetTypeofPregunta(pixel) != null)
+        //    bI.setText(GetTypeofPregunta(pixel));
+        //bI.setBackgroundColor(pixel);
+        //pixel = bmp.getPixel(Der.x+cursor.getWidth()/2, Der.y+cursor.getHeight()/2);
+        //if (GetTypeofPregunta(pixel) != null)
+        //    bD.setText(GetTypeofPregunta(pixel));
+        //bD.setBackgroundColor(pixel);
         points[0] = Izq;
         points[1] = Der;
     }
 
 
     private Point Derecha(int cX, int cY) {
-        int fX;
-        int fY;
+        double fX;
+        double fY;
         int h = (bmp.getWidth() / 2);
+        double hX = cX - h;
+        double hY = cY - h;
         if (cY < h) {
-            if (cX < h){
-                fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) - (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
-                fY = (int) ((cX - h) * Math.sin(Math.toRadians(angulo * ndado)) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
-            }
-            else{
-                fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) - (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
-                fY = (int) ((cX - h) * Math.sin(Math.toRadians(angulo * ndado)) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
-            }
+            fX = (hX * Math.cos(Math.toRadians(angulo * ndado))) - (hY * Math.sin(Math.toRadians(angulo * ndado)));
+            fY = (hX * Math.sin(Math.toRadians(angulo * ndado))) + (hY * Math.cos(Math.toRadians(angulo * ndado)));
         } else {
-            if (cX < h){
-                fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) + (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
-                fY = (int) (((cX - h) * (-Math.sin(Math.toRadians(angulo * ndado)))) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
-            }
-            else{
-                fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) + (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
-                fY = (int) (((cX - h) * (-Math.sin(Math.toRadians(angulo * ndado)))) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
-            }
+            fX = (hX * Math.cos(Math.toRadians(angulo * ndado))) + (hY * Math.sin(Math.toRadians(angulo * ndado)));
+            fY = (hX * (-Math.sin(Math.toRadians(angulo * ndado)))) + (hY * Math.cos(Math.toRadians(angulo * ndado)));
         }
         fX += h;
         fY += h;
-        return new Point(fX, fY);
+        int fXi = (int) fX;
+        int fYi = (int) fY;
+        return new Point(fXi, fYi);
     }
 
     private Point Izquierda(int cX, int cY) {
-        int fX;
-        int fY;
-        int h = bmp.getWidth() / 2;
+        double fX;
+        double fY;
+        int h = (bmp.getWidth() / 2);
+        double hX = cX - h;
+        double hY = cY - h;
         if (cY < h) {
-            if (cX < h){
-                fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) + (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
-                fY = (int) (((cX - h) * (-Math.sin(Math.toRadians(angulo * ndado)))) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
-            }
-            else{
-                fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) + (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
-                fY = (int) (((cX - h) * (-Math.sin(Math.toRadians(angulo * ndado)))) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
-            }
+            fX = (hX * Math.cos(Math.toRadians(angulo * ndado))) + (hY * Math.sin(Math.toRadians(angulo * ndado)));
+            fY = (hX * (-Math.sin(Math.toRadians(angulo * ndado)))) + (hY * Math.cos(Math.toRadians(angulo * ndado)));
         } else {
-            if (cX < h){
-                fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) - (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
-                fY = (int) ((cX - h) * Math.sin(Math.toRadians(angulo * ndado)) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
-            }
-            else{
-                fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) - (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
-                fY = (int) ((cX - h) * Math.sin(Math.toRadians(angulo * ndado)) + (cY - h) * Math.cos(Math.toRadians(angulo * ndado)));
-            }
+            fX = (hX * Math.cos(Math.toRadians(angulo * ndado))) - (hY * Math.sin(Math.toRadians(angulo * ndado)));
+            fY = (hX * Math.sin(Math.toRadians(angulo * ndado))) + (hY * Math.cos(Math.toRadians(angulo * ndado)));
         }
         fX += h;
         fY += h;
-        return new Point(fX, fY);
+        int fXi = (int) fX;
+        int fYi = (int) fY;
+        return new Point(fXi, fYi);
     }
 
     @Override
@@ -226,6 +212,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         String color = String. format("#%02X%02X%02X", r, g, b);
         for (Colores colorE : Colores.values())
             if (color.equals(colorE.getColor())){
+                quesito = colorE.isQuesito();
                 return colorE.getTipo();
             }
         return null;

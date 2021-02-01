@@ -16,10 +16,9 @@ public class PreguntaActivity extends AppCompatActivity {
 
     TextView pregunta;
     Button res1,res2,res3,res4;
-    Boolean[] respuestas = new Boolean[4];
     Button[] botones = new Button[4];
+    String resp_correcta;
     SQLiteDatabase db;
-    int resp_correcta;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,15 +52,13 @@ public class PreguntaActivity extends AppCompatActivity {
     }
 
     private void Respuestas(int id) {
-        Cursor c=db.rawQuery("SELECT id_respuesta,texto,respuestaCorrecta FROM respuesta WHERE id_preg = "+id+";",null);
+        Cursor c=db.rawQuery("SELECT texto,respuestaCorrecta FROM respuesta WHERE id_preg = "+id+";",null);
         if (c.moveToFirst()) {
             int i=0;
             do {
-                    botones[i].setText(c.getString(1));
-                    if(c.getInt(2)==1)
-                        respuestas[c.getInt(0)-1-(4*(id-1))]=true;
-                    else
-                        respuestas[c.getInt(0)-1-(4*(id-1))]=false;
+                    botones[i].setText(c.getString(0));
+                    if(c.getInt(1)==1)
+                        resp_correcta = c.getString(0);
                     i++;
             }while(c.moveToNext());
         }
