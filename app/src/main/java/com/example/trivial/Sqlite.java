@@ -37,15 +37,19 @@ public class Sqlite extends SQLiteOpenHelper{
         db.execSQL(TABLE_RESPUESTA_CREATE);
 
         db.execSQL("INSERT INTO pregunta VALUES (1, 'HISTORIA', 'DE DONDE ES NAPOLEÓN?')");
-        db.execSQL("INSERT INTO repuesta VALUES(1,1,'FRANCIA',1)");
-        db.execSQL("INSERT INTO repuesta VALUES(2,1,'ALEMANIA',1)");
-        db.execSQL("INSERT INTO repuesta VALUES(3,1,'BELGICA',1)");
-        db.execSQL("INSERT INTO repuesta VALUES(4,1,'ITALIA',1)");
+        db.execSQL("INSERT INTO respuesta VALUES(1,1,'FRANCIA',1)");
+        db.execSQL("INSERT INTO respuesta VALUES(2,1,'ALEMANIA',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(3,1,'BELGICA',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(4,1,'ITALIA',0)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-
+        db.execSQL("DROP TABLE IF EXISTS jugador");
+        db.execSQL("DROP TABLE IF EXISTS partida");
+        db.execSQL("DROP TABLE IF EXISTS historial");
+        db.execSQL("DROP TABLE IF EXISTS pregunta");
+        db.execSQL("DROP TABLE IF EXISTS respuesta");
+        onCreate(db);
     }
 }

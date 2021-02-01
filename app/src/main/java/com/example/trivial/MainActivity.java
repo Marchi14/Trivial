@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -12,16 +13,13 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
-
-import java.util.ArrayList;
-import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
    private Button addjugador, start, load, deletejugador;
    private ImageView avatar1,avatar2, avatar3, avatar4,avatar5,avatar6;
    public EditText nombrePlayer1, nombrePlayer2, nombrePlayer3,nombrePlayer4,nombrePlayer5,nombrePlayer6;
    private ConstraintLayout contenedor;
+    SQLiteDatabase db;
 
     int [] avatares= {R.drawable.hombre, R.drawable.mujer};
     int contadorP=2;
@@ -51,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
 
         Ocultarjugadores();
 
-
+        Sqlite dbHelper = new Sqlite(this);
+        db = dbHelper.getWritableDatabase();
 
         //CREACIÓN DE NUEVOS JUGADORES
         addjugador.setOnClickListener(new View.OnClickListener() {

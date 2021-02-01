@@ -20,8 +20,9 @@
     <Button
         android:id="@+id/bIzquierda"
         android:layout_width="wrap_content"
-        android:layout_height="66dp"
+        android:layout_height="60dp"
         android:layout_marginTop="44dp"
+        android:enabled="false"
         android:text="Izquierda"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,8 +34,9 @@
 
     <Button
         android:id="@+id/bDerecha"
-        android:layout_width="121dp"
+        android:layout_width="wrap_content"
         android:layout_height="60dp"
+        android:enabled="false"
         android:text="Derecha"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -112,6 +114,7 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="89dp"
         android:layout_marginRight="89dp"
+        android:enabled="false"
         android:text="ELEGIR PREGUNTA"
         app:backgroundTint="#804E05"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,28 +1,21 @@
 package com.example.trivial;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.app.Notification;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Message;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 
@@ -37,7 +30,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     int angulo = (int) (360 / 48 + 1.875);
     int ndado = 1;
     boolean tirada=true;
-    SQLiteDatabase db;
 
     @SuppressLint("ClickableViewAccessibility")
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -68,14 +60,14 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
 
 
         //conexion base de datos
-        Sqlite dbHelper = new Sqlite(this);
-        db = dbHelper.getWritableDatabase();
+
 
         bI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MoverIzquierda();
                 tirada=true;
+                bPregunta.setEnabled(true);
             }
         });
 
@@ -84,6 +76,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
             public void onClick(View v) {
                 MoverDerecha();
                 tirada=true;
+                bPregunta.setEnabled(true);
             }
         });
 
@@ -98,6 +91,9 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     }
 
     private void IniciarPregunta(){
+        bI.setEnabled(false);
+        bD.setEnabled(false);
+        bPregunta.setEnabled(false);
         Intent intent = new Intent(this,PreguntaActivity.class);
         startActivity(intent);
     }
@@ -135,7 +131,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     private Point Derecha(int cX, int cY) {
         int fX;
         int fY;
-        int h = (bmp.getWidth() / 2) - cursor.getWidth()/2;
+        int h = (bmp.getWidth() / 2);
         if (cY < h) {
             if (cX < h){
                 fX = (int) ((cX - h) * Math.cos(Math.toRadians(angulo * ndado)) - (cY - h) * Math.sin(Math.toRadians(angulo * ndado)));
@@ -216,6 +212,9 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 }
                 DetectarCasillas(bI, bD);
                 tirada=false;
+                bI.setEnabled(true);
+                bD.setEnabled(true);
+                bPregunta.setEnabled(true);
             }
         return false;
     }
