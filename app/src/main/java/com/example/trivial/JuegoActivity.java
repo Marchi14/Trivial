@@ -25,9 +25,9 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     ImageView tablero, cursor, dado;
     TextView nJugador1, nJugador2;
     Button bI, bD, bPregunta;
-    int cX, cY;
+    double cX, cY;
     Point[] points = new Point[2];
-    int angulo = 360 / 48;
+    double angulo = Math.toRadians((double)360 / 48);
     int ndado = 1;
     boolean tirada=true, quesito=false;
 
@@ -56,12 +56,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         nJugador1.setText(n1);
         nJugador2.setText(n2);
 
-
-
-
-        //conexion base de datos
-
-
         bI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -83,7 +77,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         bPregunta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 IniciarPregunta();
             }
         });
@@ -113,36 +106,32 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     private void DetectarCasillas(Button bI, Button bD) {
         Point Izq;
         Point Der;
-        cX= (int) cursor.getX();
-        cY= (int) cursor.getY();
+        cX = cursor.getX();
+        cY = cursor.getY();
         Izq = Izquierda(cX, cY);
         Der = Derecha(cX, cY);
-        //int pixel = bmp.getPixel(Izq.x+cursor.getWidth()/2, Izq.y+cursor.getHeight()/2);
-        //if (GetTypeofPregunta(pixel) != null)
-        //    bI.setText(GetTypeofPregunta(pixel));
-        //bI.setBackgroundColor(pixel);
-        //pixel = bmp.getPixel(Der.x+cursor.getWidth()/2, Der.y+cursor.getHeight()/2);
-        //if (GetTypeofPregunta(pixel) != null)
-        //    bD.setText(GetTypeofPregunta(pixel));
-        //bD.setBackgroundColor(pixel);
+        int pixel = bmp.getPixel(Izq.x+cursor.getWidth()/2, Izq.y+cursor.getHeight()/2);
+        if (GetTypeofPregunta(pixel) != null)
+            bI.setText(GetTypeofPregunta(pixel));
+        bI.setBackgroundColor(pixel);
+        pixel = bmp.getPixel(Der.x+cursor.getWidth()/2, Der.y+cursor.getHeight()/2);
+        if (GetTypeofPregunta(pixel) != null)
+            bD.setText(GetTypeofPregunta(pixel));
+        bD.setBackgroundColor(pixel);
         points[0] = Izq;
         points[1] = Der;
     }
 
 
-    private Point Derecha(int cX, int cY) {
+    private Point Derecha(double cX, double cY) {
         double fX;
         double fY;
-        int h = (bmp.getWidth() / 2);
+        double h = 540;
+        double ang = angulo * ndado;
         double hX = cX - h;
         double hY = cY - h;
-        if (cY < h) {
-            fX = (hX * Math.cos(Math.toRadians(angulo * ndado))) - (hY * Math.sin(Math.toRadians(angulo * ndado)));
-            fY = (hX * Math.sin(Math.toRadians(angulo * ndado))) + (hY * Math.cos(Math.toRadians(angulo * ndado)));
-        } else {
-            fX = (hX * Math.cos(Math.toRadians(angulo * ndado))) + (hY * Math.sin(Math.toRadians(angulo * ndado)));
-            fY = (hX * (-Math.sin(Math.toRadians(angulo * ndado)))) + (hY * Math.cos(Math.toRadians(angulo * ndado)));
-        }
+        fX = (hX * Math.cos(ang)) + (hY * Math.sin(-ang));
+        fY = (hX * Math.sin(ang)) + (hY * Math.cos(ang));
         fX += h;
         fY += h;
         int fXi = (int) fX;
@@ -150,19 +139,15 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         return new Point(fXi, fYi);
     }
 
-    private Point Izquierda(int cX, int cY) {
+    private Point Izquierda(double cX, double cY) {
         double fX;
         double fY;
-        int h = (bmp.getWidth() / 2);
+        double h = 540;
+        double ang = angulo * ndado;
         double hX = cX - h;
         double hY = cY - h;
-        if (cY < h) {
-            fX = (hX * Math.cos(Math.toRadians(angulo * ndado))) + (hY * Math.sin(Math.toRadians(angulo * ndado)));
-            fY = (hX * (-Math.sin(Math.toRadians(angulo * ndado)))) + (hY * Math.cos(Math.toRadians(angulo * ndado)));
-        } else {
-            fX = (hX * Math.cos(Math.toRadians(angulo * ndado))) - (hY * Math.sin(Math.toRadians(angulo * ndado)));
-            fY = (hX * Math.sin(Math.toRadians(angulo * ndado))) + (hY * Math.cos(Math.toRadians(angulo * ndado)));
-        }
+        fX = (hX * Math.cos(ang)) + (hY * Math.sin(ang));
+        fY = (hX * Math.sin(-ang)) + (hY * Math.cos(ang));
         fX += h;
         fY += h;
         int fXi = (int) fX;
@@ -175,7 +160,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         if (tirada)
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 Random rng = new Random();
-                ndado = rng.nextInt(6)+1;
+                //ndado = rng.nextInt(6)+1;
                 switch (ndado) {
                     case 1:
                         dado.setImageResource(R.drawable.dado1);

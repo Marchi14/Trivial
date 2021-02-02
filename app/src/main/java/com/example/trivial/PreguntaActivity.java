@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class PreguntaActivity extends AppCompatActivity {
+public class PreguntaActivity extends AppCompatActivity implements View.OnClickListener{
 
     TextView pregunta;
     Button res1,res2,res3,res4;
@@ -30,6 +31,9 @@ public class PreguntaActivity extends AppCompatActivity {
         res3=findViewById(R.id.bRes3);
         res4=findViewById(R.id.bRes4);
         botones = new Button[]{res1, res2, res3, res4};
+
+        for (Button b : botones)
+            b.setOnClickListener(this);
 
         //conexion base de datos
         Sqlite dbHelper = new Sqlite(this);
@@ -62,5 +66,17 @@ public class PreguntaActivity extends AppCompatActivity {
                     i++;
             }while(c.moveToNext());
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        Button boton = (Button) v;
+        if (boton.getText().toString().equals(resp_correcta)){
+            boton.setBackgroundColor(Color.GREEN);
+        }
+        else{
+            boton.setBackgroundColor(Color.RED);
+        }
+        finish();
     }
 }
