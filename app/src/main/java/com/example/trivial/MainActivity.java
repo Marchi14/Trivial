@@ -9,10 +9,14 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
    private Button addjugador, start, load, deletejugador;
@@ -141,6 +145,25 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menuoverflow, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(MenuItem item){
+         int id= item.getItemId();
+
+         if(id==R.id.historial){
+             Toast.makeText(this, "Historial",Toast.LENGTH_SHORT).show();
+         }
+
+         return super.onOptionsItemSelected(item);
+    }
+
+
+
+
 
     private void IniciarPartida() {
         Intent intent = new Intent(this,JuegoActivity.class);

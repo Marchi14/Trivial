@@ -30,8 +30,8 @@ public class Sqlite extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("DROP TABLE IF EXISTS jugador");
         db.execSQL("DROP TABLE IF EXISTS partida");
+        db.execSQL("DROP TABLE IF EXISTS jugador");
         db.execSQL("DROP TABLE IF EXISTS historial");
         db.execSQL("DROP TABLE IF EXISTS pregunta");
         db.execSQL("DROP TABLE IF EXISTS respuesta");
@@ -40,6 +40,12 @@ public class Sqlite extends SQLiteOpenHelper{
         db.execSQL(TABLE_HISTORIAL_CREATE);
         db.execSQL(TABLE_PREGUNTA_CREATE);
         db.execSQL(TABLE_RESPUESTA_CREATE);
+
+        db.execSQL( "INSERT INTO jugador (player,casillaX,casillaY,quesitoAmarillo,quesitoRosa,quesitoAzul,quesitoMorado,quesitoNaranja,quesitoVerde,id_partida) " +
+                        "values('perico', 2, 3, 'true', 'true', 'true', 'false', 'false','false',1)");
+
+        db.execSQL( "INSERT INTO jugador (player,casillaX,casillaY,quesitoAmarillo,quesitoRosa,quesitoAzul,quesitoMorado,quesitoNaranja,quesitoVerde,id_partida) " +
+                "values('pablito', 5, 6, 'false', 'false', 'false', 'true', 'true','true',1)");
 
         db.execSQL("INSERT INTO pregunta VALUES (1, 'HISTORIA', 'DE DONDE ES NAPOLEÓN?')");
         db.execSQL("INSERT INTO respuesta VALUES(1,1,'FRANCIA',1)");
@@ -50,8 +56,8 @@ public class Sqlite extends SQLiteOpenHelper{
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS jugador");
         db.execSQL("DROP TABLE IF EXISTS partida");
+        db.execSQL("DROP TABLE IF EXISTS jugador");
         db.execSQL("DROP TABLE IF EXISTS historial");
         db.execSQL("DROP TABLE IF EXISTS pregunta");
         db.execSQL("DROP TABLE IF EXISTS respuesta");
