@@ -27,7 +27,8 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     Button bI, bD, bPregunta;
     double cX, cY;
     Point[] points = new Point[2];
-    double angulo = Math.toRadians((double)360 / 48);
+    double angulo = Math.toRadians((double)360 / 48 - 0.5d);
+    double ang = 1.13d;
     int ndado = 1;
     boolean tirada=true, quesito=false;
 
