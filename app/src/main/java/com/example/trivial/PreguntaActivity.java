@@ -58,6 +58,8 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
                     time.setTextColor(Color.parseColor("#F9821F"));
                 }else if(millisUntilFinished<=6000){
                     time.setTextColor(Color.parseColor("#F72211"));
+                }else if(millisUntilFinished==0){
+                    time.setText("0");
                 }
             }
 
