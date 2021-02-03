@@ -111,4 +111,10 @@ public class Jugador implements Serializable {
     public void setTurno(boolean turno) {
         this.turno = turno;
     }
+
+    public boolean FinalRound(){
+        return isQuesito_amarillo() && isQuesito_azul() && isQuesito_morado() && isQuesito_naranja()
+                && isQuesito_rosa() && isQuesito_verde();
+
+    }
 }
