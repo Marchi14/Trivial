@@ -2,6 +2,7 @@ package com.example.trivial;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -17,8 +19,10 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
 
     Jugador jugador1,jugador2;
     TextView pregunta;
+    boolean quesito;
     Button res1,res2,res3,res4;
     Button[] botones = new Button[4];
+    String tema;
     String resp_correcta;
     SQLiteDatabase db;
     @Override
@@ -32,9 +36,11 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
         res3=findViewById(R.id.bRes3);
         res4=findViewById(R.id.bRes4);
         botones = new Button[]{res1, res2, res3, res4};
-        Bundle bundle=getIntent().getExtras();
-        jugador1= (Jugador) bundle.get("jugador 1");
-        jugador2= (Jugador) bundle.get("jugador 2");
+        Bundle bundle = getIntent().getExtras();
+        jugador1 = (Jugador) bundle.get("jugador 1");
+        jugador2 = (Jugador) bundle.get("jugador 2");
+        tema = bundle.getString("Tema");
+        quesito = bundle.getBoolean("queso");
 
         for (Button b : botones)
             b.setOnClickListener(this);
@@ -75,20 +81,16 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         Button boton = (Button) v;
+        Intent intent = new Intent(this, JuegoActivity.class);
         if (boton.getText().toString().equals(resp_correcta)){
             boton.setBackgroundColor(Color.GREEN);
+            intent.putExtra("acierto",true);
         }
         else{
             boton.setBackgroundColor(Color.RED);
-            if(jugador1.isTurno()){
-                jugador1.setTurno(false);
-                jugador2.setTurno(true);
-            }
-            else if(jugador2.isTurno()){
-                jugador1.setTurno(true);
-                jugador2.setTurno(false);
-            }
+            intent.putExtra("acierto",false);
         }
+        setResult(RESULT_OK, intent);
         finish();
     }
 }
