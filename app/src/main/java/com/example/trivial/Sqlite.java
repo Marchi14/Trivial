@@ -30,11 +30,6 @@ public class Sqlite extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("DROP TABLE IF EXISTS partida");
-        db.execSQL("DROP TABLE IF EXISTS jugador");
-        db.execSQL("DROP TABLE IF EXISTS historial");
-        db.execSQL("DROP TABLE IF EXISTS pregunta");
-        db.execSQL("DROP TABLE IF EXISTS respuesta");
         db.execSQL(TABLE_PARTIDA_CREATE);
         db.execSQL(TABLE_JUGADOR_CREATE);
         db.execSQL(TABLE_HISTORIAL_CREATE);
@@ -57,51 +52,91 @@ public class Sqlite extends SQLiteOpenHelper{
 
         //PREGUNTAS
         //HISTORIA
-        db.execSQL("INSERT INTO pregunta VALUES (1, 'HISTORIA', 'DE DONDE ES NAPOLEÓN?')");
+        db.execSQL("INSERT INTO pregunta VALUES (1, 'HISTORIA', '¿De que pais es Napoleón?')");
         db.execSQL("INSERT INTO respuesta VALUES(1,1,'FRANCIA',1)");
         db.execSQL("INSERT INTO respuesta VALUES(2,1,'ALEMANIA',0)");
         db.execSQL("INSERT INTO respuesta VALUES(3,1,'BELGICA',0)");
         db.execSQL("INSERT INTO respuesta VALUES(4,1,'ITALIA',0)");
         //
-        db.execSQL("INSERT INTO pregunta VALUES (2, 'HISTORIA', ' ¿ Quién fue el primer presidente de la democracia española tras el franquismo?')");
+        db.execSQL("INSERT INTO pregunta VALUES (2, 'HISTORIA', ' ¿Quién fue el primer presidente de la democracia española tras el franquismo?')");
         db.execSQL("INSERT INTO respuesta VALUES(5,2,'FELIPE GONZALEZ',0)");
         db.execSQL("INSERT INTO respuesta VALUES(6,2,'ADOLFO SUÁREZ',1)");
         db.execSQL("INSERT INTO respuesta VALUES(7,2,'MIKEL ICETA',0)");
         db.execSQL("INSERT INTO respuesta VALUES(8,2,'MARIANO RAJOY',0)");
         //
-        db.execSQL("INSERT INTO pregunta VALUES (3, 'HISTORIA', ' ¿La invasión de qué fortaleza por parte de los revolucionarios es considerada como el punto de inicio de la Revolución Francesa?')");
+        db.execSQL("INSERT INTO pregunta VALUES (3, 'HISTORIA', '¿La invasión de qué fortaleza por parte de los revolucionarios es considerada como el punto de inicio de la Revolución Francesa?')");
         db.execSQL("INSERT INTO respuesta VALUES(9,3,'VERSALLES',0)");
         db.execSQL("INSERT INTO respuesta VALUES(10,3,'NO SE TOMO NINGUNA',0)");
         db.execSQL("INSERT INTO respuesta VALUES(11,3,'LA BASTILLA',1)");
         db.execSQL("INSERT INTO respuesta VALUES(12,3,'EL LOUVRE',0)");
         //
-        db.execSQL("INSERT INTO pregunta VALUES (4, 'HISTORIA', ' ¿Quién fue el primer presidente de Estados Unidos?')");
+        db.execSQL("INSERT INTO pregunta VALUES (4, 'HISTORIA', '¿Quién fue el primer presidente de Estados Unidos?')");
         db.execSQL("INSERT INTO respuesta VALUES(13,4,'GEORGE WASHINGTON',1)");
         db.execSQL("INSERT INTO respuesta VALUES(14,4,'ABRAHAM LINCOLN',0)");
         db.execSQL("INSERT INTO respuesta VALUES(15,4,'BARACK OBAMA',0)");
         db.execSQL("INSERT INTO respuesta VALUES(16,4,'RICHARD NIXON',0)");
         //
-        db.execSQL("INSERT INTO pregunta VALUES (5, 'HISTORIA', ' ¿Qué carabela no volvió del viaje en el que Colón arribó a América por primera vez?')");
+        db.execSQL("INSERT INTO pregunta VALUES (5, 'HISTORIA', '¿Qué carabela no volvió del viaje en el que Colón arribó a América por primera vez?')");
         db.execSQL("INSERT INTO respuesta VALUES(17,5,'LA PINTA',0)");
         db.execSQL("INSERT INTO respuesta VALUES(18,5,'LA NIÑA',0)");
         db.execSQL("INSERT INTO respuesta VALUES(19,5,'LA SANTA MARÍA',1)");
         db.execSQL("INSERT INTO respuesta VALUES(20,5,'VOLVIERON TODAS',0)");
 
         //GEOGRAFÍA
-        db.execSQL("INSERT INTO pregunta VALUES (6, 'GEOGRAFÍA', ' ¿Cuál es el río más caudaloso del mundo?')");
+        db.execSQL("INSERT INTO pregunta VALUES (6, 'GEOGRAFÍA', '¿Cuál es el río más caudaloso del mundo?')");
         db.execSQL("INSERT INTO respuesta VALUES(21,6,'EL NILO',0)");
         db.execSQL("INSERT INTO respuesta VALUES(22,6,'EL AMAZONAS',1)");
         db.execSQL("INSERT INTO respuesta VALUES(23,6,'EL RÍO AMARILLO',0)");
         db.execSQL("INSERT INTO respuesta VALUES(24,6,'EL EBRO',0)");
         //
-        db.execSQL("INSERT INTO pregunta VALUES (7, 'GEOGRAFÍA', '  ¿Entre qué países podemos encontrar el Estrecho de Bering?')");
+        db.execSQL("INSERT INTO pregunta VALUES (7, 'GEOGRAFÍA', '¿Entre qué países podemos encontrar el Estrecho de Bering?')");
         db.execSQL("INSERT INTO respuesta VALUES(25,7,'ENTRE RUSIA Y EEUU',1)");
         db.execSQL("INSERT INTO respuesta VALUES(26,7,'ENTRE CHINA Y RUSIA',0)");
         db.execSQL("INSERT INTO respuesta VALUES(27,7,'ENTRE FRANCIA Y UK',0)");
         db.execSQL("INSERT INTO respuesta VALUES(28,7,'ENTRE ESPAÑA Y MARRUECOS',0)");
         //
+        db.execSQL("INSERT INTO pregunta VALUES (8, 'GEOGRAFÍA', '¿Cuál es la lengua más hablada del mundo?')");
+        db.execSQL("INSERT INTO respuesta VALUES(29,8,'CHINO CANTONES',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(30,8,'ESPAÑOL',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(31,8,'INGLES',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(32,8,'CHINO MANDARIN',1)");
+        //
+        db.execSQL("INSERT INTO pregunta VALUES (9, 'GEOGRAFÍA', '¿Cuál es la capital de Brasil?')");
+        db.execSQL("INSERT INTO respuesta VALUES(33,9,'RIO DE JANEIRO',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(34,9,'BRASILIA',1)");
+        db.execSQL("INSERT INTO respuesta VALUES(35,9,'SAO PAULO',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(36,9,'PERIQUES',0)");
+        //
+        db.execSQL("INSERT INTO pregunta VALUES (10, 'GEOGRAFÍA', '¿Dónde podemos encontrar la Casa Rosada?')");
+        db.execSQL("INSERT INTO respuesta VALUES(37,10,'ESTADOS UNIDOS',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(38,10,'PERU',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(39,10,'PAKISTAN',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(40,10,'ARGENTINA',1)");
 
-
+        //OCIO Y DEPORTE
+        db.execSQL("INSERT INTO pregunta VALUES (11, 'OCIO Y DEPORTE', '¿Cómo se llama el videojuego de estrategia cuyos torneos tienen un seguimiento masivo en Corea del Sur desde finales de los 90?')");
+        db.execSQL("INSERT INTO respuesta VALUES(41,11,'OVERWATCH',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(42,11,'STARCRAFT',1)");
+        db.execSQL("INSERT INTO respuesta VALUES(43,11,'STARCRAFT II',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(44,11,'DOTA 2',0)");
+        //
+        db.execSQL("INSERT INTO pregunta VALUES (12, 'OCIO Y DEPORTE', '¿Quién fue Cobi?')");
+        db.execSQL("INSERT INTO respuesta VALUES(45,12,'MASCOTA DE LOS JJOO DE BARCELONA',1)");
+        db.execSQL("INSERT INTO respuesta VALUES(46,12,'MASCOTA DE LOS ANGELES CLIPERS',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(47,12,'JUGADOR DE LA LIGA ITALIANA DE VOLLEYBALL',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(48,12,'MASCOTA DEL MUNDIAL DE BALONMANO DE 2018',0)");
+        //
+        db.execSQL("INSERT INTO pregunta VALUES (13, 'OCIO Y DEPORTE', '¿Qué atleta tiene el record plusmarca de velocidad en los 100 metros lisos?')");
+        db.execSQL("INSERT INTO respuesta VALUES(49,13,'RICHARD THOMPSON',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(50,13,'TYSON GAY',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(51,13,'USAIN BOLT',1)");
+        db.execSQL("INSERT INTO respuesta VALUES(52,13,'FLORENCE GRIFFITH',0)");
+        //
+        db.execSQL("INSERT INTO pregunta VALUES (14, 'OCIO Y DEPORTE', '¿Qué atleta tiene el record plusmarca de velocidad en los 100 metros lisos?')");
+        db.execSQL("INSERT INTO respuesta VALUES(53,14,'RICHARD THOMPSON',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(54,14,'TYSON GAY',0)");
+        db.execSQL("INSERT INTO respuesta VALUES(55,14,'USAIN BOLT',1)");
+        db.execSQL("INSERT INTO respuesta VALUES(56,14,'FLORENCE GRIFFITH',0)");
     }
 
     @Override

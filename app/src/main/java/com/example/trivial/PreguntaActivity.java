@@ -78,7 +78,8 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
             default:
                 throw new IllegalStateException("Unexpected value: " + tema);
         }
-        Cursor c=db.rawQuery("SELECT id_pregunta,enunciado FROM pregunta WHERE id_pregunta = "+rng+";",null);
+        Cursor c=db.rawQuery("SELECT id_pregunta,enunciado FROM pregunta WHERE Tipo = '"+tema.toUpperCase()+"'" +
+                " AND id_pregunta = "+rng+";",null);
 
         if (c.moveToFirst()) {
                 String enunciado = c.getString(1);
