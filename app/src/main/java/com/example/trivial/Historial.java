@@ -28,14 +28,28 @@ public class Historial extends AppCompatActivity {
         Sqlite dbHelper = new Sqlite(this);
         db = dbHelper.getWritableDatabase();
 
-
+        String partida="ID partida: ";
         ArrayList<String> ranking = new ArrayList<>();
 
-        Cursor fila = db.rawQuery("select player, id_par, id_player, posicion from jugador , historial where id_player=_id ", null);
+        Cursor fila = db.rawQuery("select player, id_par, id_player, posicion, activa from jugador , historial, partida where id_player=_id ", null);
         if(fila.moveToFirst()){
+
+            String situacion= fila.getString(4);
+
+            if(situacion.equals("0")){
+                situacion="Terminada";
+            }else if(situacion.equals("1")){
+                situacion="Activa";
+            }
+
+            partida=partida+fila.getString(1)+  "    Situacion: " + situacion;
+
             do{
-                ranking.add("ID Partida: " + fila.getString(1)+"\n-Jugador: "+fila.getString(0) +  "\n -Posición: " + fila.getString(3));
+                partida=partida+"\n-Jugador: "+fila.getString(0) +  "\n -Posición: " + fila.getString(3);
+
             }while(fila.moveToNext());
+
+            ranking.add(partida);
 
         }else if(!fila.moveToFirst()){
             Toast.makeText(this, "No hay registros. Comienza una Nueva Partida.",Toast.LENGTH_SHORT).show();
