@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         addjugador = findViewById(R.id.AddJugador);
         deletejugador = findViewById(R.id.DeletePlayer);
         start = findViewById(R.id.Start);
-        load = findViewById(R.id.Load);
+        //load = findViewById(R.id.Load);
         avatar1 = findViewById(R.id.Avatar1);
         avatar2 = findViewById(R.id.Avatar2);
         avatar3 = findViewById(R.id.Avatar3);
