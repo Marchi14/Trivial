@@ -78,45 +78,75 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
         Sqlite dbHelper = new Sqlite(this);
         db = dbHelper.getWritableDatabase();
 
-        Pregunta();
+        Pregunta(bundle.getBoolean("final"));
     }
 
-    private void Pregunta(){
-        int rng;
-        switch (tema){
-            case "Historia":
-                rng = (int)(Math.random() * (6 - 1 + 1) + 1);
-                break;
-            case "Geografía":
-                rng = (int)(Math.random() * (11 - 6 + 1) + 6);
-                break;
-            case "Ocio y Deporte":
-                rng = (int)(Math.random() * (16 - 11 + 1) + 11);
-                break;
-            case "Ciencias y naturaleza":
-                rng = (int)(Math.random() * (21 - 16 + 1) + 16);
-                break;
-            case "Arte y Literatura":
-                rng = (int)(Math.random() * (26 - 21 + 1) + 21);
-                break;
-            case "Entretenimiento":
-                rng = (int)(Math.random() * (31 - 26 + 1) + 26);
-                break;
-            default:
-                throw new IllegalStateException("Unexpected value: " + tema);
+    private void Pregunta(boolean f){
+        if (f){
+            for (int i = 0; i<6; i++){
+                Random rnd = new Random();
+                int rng = rnd.nextInt(6);
+                switch (rng){
+                    case 0:
+                        tema = "HISTORIA";
+                        break;
+                    case 1:
+                        tema = "OCIO Y DEPORTE";
+                        break;
+                    case 2:
+                        tema = "ARTE Y LITERATURA";
+                        break;
+                    case 3:
+                        tema = "GEOGRAFÍA";
+                        break;
+                    case 4:
+                        tema = "ENTRETENIMIENTO";
+                        break;
+                    case 5:
+                        tema = "CIENCIAS Y NATURALEZA";
+                        break;
+                }
+                Cursor c = db.rawQuery("SELECT id_pregunta,enunciado FROM pregunta ORDER BY RANDOM() LIMIT 1" +
+                        " WHERE Tipo = '" + tema + "';", null);
+            }
         }
-        Cursor c=db.rawQuery("SELECT id_pregunta,enunciado FROM pregunta WHERE Tipo = '"+tema.toUpperCase()+"'" +
-                " AND id_pregunta = "+rng+";",null);
+        else {
+            int rng;
+            switch (tema) {
+                case "Historia":
+                    rng = (int) (Math.random() * (6 - 1 + 1) + 1);
+                    break;
+                case "Geografía":
+                    rng = (int) (Math.random() * (11 - 6 + 1) + 6);
+                    break;
+                case "Ocio y Deporte":
+                    rng = (int) (Math.random() * (16 - 11 + 1) + 11);
+                    break;
+                case "Ciencias y naturaleza":
+                    rng = (int) (Math.random() * (21 - 16 + 1) + 16);
+                    break;
+                case "Arte y Literatura":
+                    rng = (int) (Math.random() * (26 - 21 + 1) + 21);
+                    break;
+                case "Entretenimiento":
+                    rng = (int) (Math.random() * (31 - 26 + 1) + 26);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + tema);
+            }
+            Cursor c = db.rawQuery("SELECT id_pregunta,enunciado FROM pregunta WHERE Tipo = '" + tema.toUpperCase() + "'" +
+                    " AND id_pregunta = " + rng + ";", null);
 
-        if (c.moveToFirst()) {
+            if (c.moveToFirst()) {
                 String enunciado = c.getString(1);
                 pregunta.setText(enunciado);
                 Respuestas(c.getInt(0));
+            }
         }
     }
 
     private void Respuestas(int id) {
-        Cursor c=db.rawQuery("SELECT texto,respuestaCorrecta FROM respuesta WHERE id_preg = "+id+";",null);
+        Cursor c=db.rawQuery("SELECT texto,respuestaCorrecta FROM respuesta ORDER BY RANDOM() WHERE id_preg = "+id+";",null);
         if (c.moveToFirst()) {
             int i=0;
             do {

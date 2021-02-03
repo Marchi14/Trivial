@@ -104,6 +104,9 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     }
 
     private void IniciarPregunta(){
+        boolean f=false;
+        if ((jugador1.FinalRound() && jugador1.isTurno()) || (jugador2.FinalRound() && jugador2.isTurno()))
+            f = true;
         bI.setEnabled(false);
         bD.setEnabled(false);
         Intent intent = new Intent(JuegoActivity.this,PreguntaActivity.class);
@@ -111,6 +114,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         intent.putExtra("queso",quesito);
         intent.putExtra("jugador 1",jugador1);
         intent.putExtra("jugador 2",jugador2);
+        intent.putExtra("final",f);
         startActivityForResult(intent, ASK_QUESTION_REQUEST);
     }
 
