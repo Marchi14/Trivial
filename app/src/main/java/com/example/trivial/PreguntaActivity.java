@@ -69,7 +69,7 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
             case "Ciencias y naturaleza":
                 rng = (int)(Math.random() * (21 - 16 + 1) + 16);
                 break;
-            case "Arte":
+            case "Arte y Literatura":
                 rng = (int)(Math.random() * (26 - 21 + 1) + 21);
                 break;
             case "Entretenimiento":

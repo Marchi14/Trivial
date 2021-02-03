@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         Sqlite dbHelper = new Sqlite(this);
         db = dbHelper.getWritableDatabase();
-        dbHelper.onCreate(db);
+        //dbHelper.onCreate(db);
 
         //CREACIÓN DE NUEVOS JUGADORES
         addjugador.setOnClickListener(new View.OnClickListener() {
