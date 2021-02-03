@@ -8,6 +8,7 @@ import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.Layout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -21,13 +22,14 @@ import java.util.Random;
 
 public class JuegoActivity extends AppCompatActivity implements View.OnTouchListener {
 
+    View quesos1,quesos2;
     Bitmap bmp;
     ImageView tablero, cursor, dado;
     TextView nJugador1, nJugador2;
-    Button bI, bD, bPregunta;
+    Button bI, bD;
     double cX, cY;
     Point[] points = new Point[2];
-    double angulo = Math.toRadians((double)360 / 48);
+    double angulo = Math.toRadians((double)360 / 48 + 0.2d);
     int ndado = 1;
     boolean tirada=true, quesito=false;
 
@@ -41,10 +43,11 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         cursor = findViewById(R.id.cursor);
         bI = findViewById(R.id.bIzquierda);
         bD = findViewById(R.id.bDerecha);
-        bPregunta=findViewById(R.id.bElegirPregunta);
         bmp = ((BitmapDrawable) tablero.getDrawable()).getBitmap();
         bmp = bmp.copy(Bitmap.Config.ARGB_8888, true);
         dado = findViewById(R.id.dado);
+        quesos1 = findViewById(R.id.Quesos1);
+        quesos2 = findViewById(R.id.Quesos2);
         dado.setOnTouchListener(this);
 
         //CONSEGUIR LOS NOMBRES DE LOS JUGADORES
@@ -56,12 +59,17 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         nJugador1.setText(n1);
         nJugador2.setText(n2);
 
+        Jugador jugador1 = new Jugador(n1);
+        jugador1.setTurno(true);
+        Jugador jugador2 = new Jugador(n2);
+
         bI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MoverIzquierda();
+                if (bD.getText() != "Volver a Tirar")
+                    IniciarPregunta();
                 tirada=true;
-                bPregunta.setEnabled(true);
             }
         });
 
@@ -69,15 +77,9 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
             @Override
             public void onClick(View v) {
                 MoverDerecha();
+                if (bD.getText() != "Volver a Tirar")
+                    IniciarPregunta();
                 tirada=true;
-                bPregunta.setEnabled(true);
-            }
-        });
-
-        bPregunta.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                IniciarPregunta();
             }
         });
 
@@ -87,7 +89,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     private void IniciarPregunta(){
         bI.setEnabled(false);
         bD.setEnabled(false);
-        bPregunta.setEnabled(false);
         Intent intent = new Intent(this,PreguntaActivity.class);
         intent.putExtra("Tema",GetTypeofPregunta(bmp.getPixel((int) (cursor.getX()+cursor.getWidth()/2), (int) (cursor.getY()+cursor.getHeight()/2))));
         startActivity(intent);
@@ -185,7 +186,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 tirada=false;
                 bI.setEnabled(true);
                 bD.setEnabled(true);
-                bPregunta.setEnabled(true);
             }
         return false;
     }
@@ -202,4 +202,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
             }
         return null;
     }
+
+
 }
