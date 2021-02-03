@@ -128,7 +128,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/Arte" />
+            app:srcCompat="@drawable/arte" />
 
         <ImageView
             android:id="@+id/Deportes1"
@@ -142,7 +142,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Arte1"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/Deporte" />
+            app:srcCompat="@drawable/deporte" />
 
         <ImageView
             android:id="@+id/Entretenimiento1"
@@ -156,7 +156,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Deportes1"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/Entretenimiento" />
+            app:srcCompat="@drawable/entretenimiento" />
 
         <ImageView
             android:id="@+id/Geografia1"
@@ -170,7 +170,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Entretenimiento1"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/Geografia" />
+            app:srcCompat="@drawable/geografia" />
 
         <ImageView
             android:id="@+id/Historia1"
@@ -184,7 +184,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Geografia1"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/Historia" />
+            app:srcCompat="@drawable/historia" />
 
         <ImageView
             android:id="@+id/Naturaleza1"
@@ -197,7 +197,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Historia1"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/Naturaleza" />
+            app:srcCompat="@drawable/naturaleza" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -225,7 +225,7 @@
             app:layout_constraintStart_toStartOf="@+id/Geografia2"
             app:layout_constraintTop_toBottomOf="@+id/Deportes2"
             app:layout_constraintVertical_bias="0.074"
-            app:srcCompat="@drawable/Entretenimiento" />
+            app:srcCompat="@drawable/entretenimiento" />
 
         <ImageView
             android:id="@+id/Arte2"
@@ -238,7 +238,7 @@
             app:layout_constraintStart_toStartOf="@+id/Deportes2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.005"
-            app:srcCompat="@drawable/Arte" />
+            app:srcCompat="@drawable/arte" />
 
         <ImageView
             android:id="@+id/Deportes2"
@@ -254,7 +254,7 @@
             app:layout_constraintStart_toStartOf="@+id/Entretenimiento2"
             app:layout_constraintTop_toBottomOf="@+id/Arte2"
             app:layout_constraintVertical_bias="0.25"
-            app:srcCompat="@drawable/Deporte" />
+            app:srcCompat="@drawable/deporte" />
 
         <ImageView
             android:id="@+id/Geografia2"
@@ -270,7 +270,7 @@
             app:layout_constraintStart_toStartOf="@+id/Historia2"
             app:layout_constraintTop_toBottomOf="@+id/Entretenimiento2"
             app:layout_constraintVertical_bias="0.066"
-            app:srcCompat="@drawable/Geografia" />
+            app:srcCompat="@drawable/geografia" />
 
         <ImageView
             android:id="@+id/Historia2"
@@ -286,7 +286,7 @@
             app:layout_constraintStart_toStartOf="@+id/Naturaleza2"
             app:layout_constraintTop_toBottomOf="@+id/Geografia2"
             app:layout_constraintVertical_bias="0.321"
-            app:srcCompat="@drawable/Historia" />
+            app:srcCompat="@drawable/historia" />
 
         <ImageView
             android:id="@+id/Naturaleza2"
@@ -299,7 +299,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Historia2"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/Naturaleza" />
+            app:srcCompat="@drawable/naturaleza" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

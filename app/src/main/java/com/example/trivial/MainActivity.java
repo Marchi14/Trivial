@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         Sqlite dbHelper = new Sqlite(this);
         db = dbHelper.getWritableDatabase();
+        dbHelper.onCreate(db);
 
         //CREACIÓN DE NUEVOS JUGADORES
         addjugador.setOnClickListener(new View.OnClickListener() {
@@ -154,12 +155,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     public boolean onOptionsItemSelected(MenuItem item){
-        Intent intent = new Intent(this,Historial.class);
         int id= item.getItemId();
 
-         if(id==R.id.historial){
-             Toast.makeText(this, "Historial",Toast.LENGTH_SHORT).show();
-         }
+        switch (item.getItemId()) {
+            case R.id.historial:
+                Intent intent = new Intent(this, Historial.class);
+                Toast.makeText(this, "Historial",Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+                return true;
+
+        }
          return super.onOptionsItemSelected(item);
     }
 
