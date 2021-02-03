@@ -50,6 +50,8 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
         quesito = bundle.getBoolean("queso");
 
         //timer
+        Intent intent = new Intent(this, JuegoActivity.class);
+
         new CountDownTimer(21000, 1000) {
 
             public void onTick(long millisUntilFinished) {
@@ -62,10 +64,11 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
                     time.setText("0");
                 }
             }
-
             public void onFinish() {
                 time.setText("0");
                 time.setTextColor(Color.parseColor("#F72211"));
+                intent.putExtra("acierto",false);
+                finish();
             }
         }.start();
 
