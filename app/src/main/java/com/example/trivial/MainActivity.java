@@ -146,23 +146,22 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //CREACION DEL MENU PARA EL HISTORIAL
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.menuoverflow, menu);
         return true;
     }
 
+
     public boolean onOptionsItemSelected(MenuItem item){
-         int id= item.getItemId();
+        Intent intent = new Intent(this,Historial.class);
+        int id= item.getItemId();
 
          if(id==R.id.historial){
              Toast.makeText(this, "Historial",Toast.LENGTH_SHORT).show();
          }
-
          return super.onOptionsItemSelected(item);
     }
-
-
-
 
 
     private void IniciarPartida() {
