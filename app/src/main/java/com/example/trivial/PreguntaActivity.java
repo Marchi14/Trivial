@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 public class PreguntaActivity extends AppCompatActivity implements View.OnClickListener{
 
+    Jugador jugador1,jugador2;
     TextView pregunta;
     Button res1,res2,res3,res4;
     Button[] botones = new Button[4];
@@ -31,6 +32,9 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
         res3=findViewById(R.id.bRes3);
         res4=findViewById(R.id.bRes4);
         botones = new Button[]{res1, res2, res3, res4};
+        Bundle bundle=getIntent().getExtras();
+        jugador1= (Jugador) bundle.get("jugador 1");
+        jugador2= (Jugador) bundle.get("jugador 2");
 
         for (Button b : botones)
             b.setOnClickListener(this);
@@ -76,6 +80,14 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
         }
         else{
             boton.setBackgroundColor(Color.RED);
+            if(jugador1.isTurno()){
+                jugador1.setTurno(false);
+                jugador2.setTurno(true);
+            }
+            else if(jugador2.isTurno()){
+                jugador1.setTurno(true);
+                jugador2.setTurno(false);
+            }
         }
         finish();
     }

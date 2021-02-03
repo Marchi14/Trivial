@@ -22,7 +22,7 @@ import java.util.Random;
 
 public class JuegoActivity extends AppCompatActivity implements View.OnTouchListener {
 
-    View quesos1,quesos2;
+    Jugador jugador1,jugador2;
     Bitmap bmp;
     ImageView tablero, cursor, dado;
     TextView nJugador1, nJugador2;
@@ -31,7 +31,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     Point[] points = new Point[2];
     double angulo = Math.toRadians((double)360 / 48 + 0.2d);
     int ndado = 1;
-    boolean tirada=true, quesito=false;
+    boolean tirada=true,quesito=false;
 
     @SuppressLint("ClickableViewAccessibility")
     @RequiresApi(api = Build.VERSION_CODES.Q)
@@ -46,8 +46,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         bmp = ((BitmapDrawable) tablero.getDrawable()).getBitmap();
         bmp = bmp.copy(Bitmap.Config.ARGB_8888, true);
         dado = findViewById(R.id.dado);
-        quesos1 = findViewById(R.id.Quesos1);
-        quesos2 = findViewById(R.id.Quesos2);
         dado.setOnTouchListener(this);
 
         //CONSEGUIR LOS NOMBRES DE LOS JUGADORES
@@ -59,9 +57,9 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         nJugador1.setText(n1);
         nJugador2.setText(n2);
 
-        Jugador jugador1 = new Jugador(n1);
+        jugador1 = new Jugador(n1);
         jugador1.setTurno(true);
-        Jugador jugador2 = new Jugador(n2);
+        jugador2 = new Jugador(n2);
 
         bI.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +77,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 MoverDerecha();
                 if (bD.getText() != "Volver a Tirar")
                     IniciarPregunta();
+                Quesito();
                 tirada=true;
             }
         });
@@ -91,6 +90,8 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         bD.setEnabled(false);
         Intent intent = new Intent(this,PreguntaActivity.class);
         intent.putExtra("Tema",GetTypeofPregunta(bmp.getPixel((int) (cursor.getX()+cursor.getWidth()/2), (int) (cursor.getY()+cursor.getHeight()/2))));
+        intent.putExtra("jugador 1",jugador1);
+        intent.putExtra("jugador 2",jugador2);
         startActivity(intent);
     }
 
@@ -203,5 +204,53 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         return null;
     }
 
-
+    private void Quesito(){
+        if (quesito){
+            String tema=GetTypeofPregunta(bmp.getPixel((int) (cursor.getX()+cursor.getWidth()/2), (int) (cursor.getY()+cursor.getHeight()/2)));
+            if(jugador1.isTurno()){
+                switch(tema){
+                    case "Ocio y Deporte":
+                        findViewById(R.id.Deportes1).setAlpha(1);
+                        break;
+                    case "Historia":
+                        findViewById(R.id.Historia1).setAlpha(1);
+                        break;
+                    case "Ciencias y naturaleza":
+                        findViewById(R.id.Naturaleza1).setAlpha(1);
+                        break;
+                    case "Arte":
+                        findViewById(R.id.Arte1).setAlpha(1);
+                        break;
+                    case "Geografía":
+                        findViewById(R.id.Geografia1).setAlpha(1);
+                        break;
+                    case "Entretenimiento":
+                        findViewById(R.id.Entretenimiento1).setAlpha(1);
+                        break;
+                }
+            }
+            else if(jugador2.isTurno()){
+                switch(tema){
+                    case "Ocio y Deporte":
+                        findViewById(R.id.Deportes2).setAlpha(1);
+                        break;
+                    case "Historia":
+                        findViewById(R.id.Historia2).setAlpha(1);
+                        break;
+                    case "Ciencias y naturaleza":
+                        findViewById(R.id.Naturaleza2).setAlpha(1);
+                        break;
+                    case "Arte":
+                        findViewById(R.id.Arte2).setAlpha(1);
+                        break;
+                    case "Geografía":
+                        findViewById(R.id.Geografia2).setAlpha(1);
+                        break;
+                    case "Entretenimiento":
+                        findViewById(R.id.Entretenimiento2).setAlpha(1);
+                        break;
+                }
+            }
+        }
+    }
 }

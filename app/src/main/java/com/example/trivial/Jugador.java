@@ -1,6 +1,8 @@
 package com.example.trivial;
 
-public class Jugador {
+import java.io.Serializable;
+
+public class Jugador implements Serializable {
     String Nombre;
     int casillaX;
     int casillaY;
@@ -18,15 +20,15 @@ public class Jugador {
     }
 
     public Jugador(String nombre, int casillaX, int casillaY, boolean quesito_amarillo, boolean quesito_rosa, boolean quesito_azul, boolean quesito_morado, boolean quesito_naranja, boolean quesito_verde, boolean turno) {
-        Nombre = nombre;
+        this.Nombre = nombre;
         this.casillaX = casillaX;
         this.casillaY = casillaY;
-        Quesito_amarillo = quesito_amarillo;
-        Quesito_rosa = quesito_rosa;
-        Quesito_azul = quesito_azul;
-        Quesito_morado = quesito_morado;
-        Quesito_naranja = quesito_naranja;
-        Quesito_verde = quesito_verde;
+        this.Quesito_amarillo = quesito_amarillo;
+        this.Quesito_rosa = quesito_rosa;
+        this.Quesito_azul = quesito_azul;
+        this.Quesito_morado = quesito_morado;
+        this.Quesito_naranja = quesito_naranja;
+        this.Quesito_verde = quesito_verde;
         this.turno = turno;
     }
 

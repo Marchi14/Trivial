@@ -118,7 +118,7 @@
         app:layout_constraintVertical_bias="0.255">
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/Arte1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:alpha="0.5"
@@ -131,71 +131,71 @@
             app:srcCompat="@drawable/Arte" />
 
         <ImageView
-            android:id="@+id/imageView4"
+            android:id="@+id/Deportes1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="8dp"
             android:alpha="0.5"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageView3"
+            app:layout_constraintEnd_toEndOf="@+id/Arte1"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView3"
+            app:layout_constraintTop_toBottomOf="@+id/Arte1"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/Deporte" />
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/Entretenimiento1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="12dp"
             android:alpha="0.5"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageView4"
+            app:layout_constraintEnd_toEndOf="@+id/Deportes1"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4"
+            app:layout_constraintTop_toBottomOf="@+id/Deportes1"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/Entretenimiento" />
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/Geografia1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="4dp"
             android:alpha="0.5"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageView6"
+            app:layout_constraintEnd_toEndOf="@+id/Entretenimiento1"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView6"
+            app:layout_constraintTop_toBottomOf="@+id/Entretenimiento1"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/Geografia" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/Historia1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="12dp"
             android:alpha="0.5"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageView7"
+            app:layout_constraintEnd_toEndOf="@+id/Geografia1"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView7"
+            app:layout_constraintTop_toBottomOf="@+id/Geografia1"
             app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/Historia" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/Naturaleza1"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:alpha="0.5"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/imageView8"
+            app:layout_constraintEnd_toEndOf="@+id/Historia1"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView8"
+            app:layout_constraintTop_toBottomOf="@+id/Historia1"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/Naturaleza" />
 
@@ -213,7 +213,7 @@
         app:layout_constraintVertical_bias="0.2">
 
         <ImageView
-            android:id="@+id/imageView12"
+            android:id="@+id/Entretenimiento2"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="36dp"
@@ -222,26 +222,26 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/imageView13"
-            app:layout_constraintTop_toBottomOf="@+id/imageView11"
+            app:layout_constraintStart_toStartOf="@+id/Geografia2"
+            app:layout_constraintTop_toBottomOf="@+id/Deportes2"
             app:layout_constraintVertical_bias="0.074"
             app:srcCompat="@drawable/Entretenimiento" />
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/Arte2"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:alpha="0.5"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/imageView11"
+            app:layout_constraintStart_toStartOf="@+id/Deportes2"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.005"
             app:srcCompat="@drawable/Arte" />
 
         <ImageView
-            android:id="@+id/imageView11"
+            android:id="@+id/Deportes2"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="36dp"
@@ -251,13 +251,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/imageView12"
-            app:layout_constraintTop_toBottomOf="@+id/imageView10"
+            app:layout_constraintStart_toStartOf="@+id/Entretenimiento2"
+            app:layout_constraintTop_toBottomOf="@+id/Arte2"
             app:layout_constraintVertical_bias="0.25"
             app:srcCompat="@drawable/Deporte" />
 
         <ImageView
-            android:id="@+id/imageView13"
+            android:id="@+id/Geografia2"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="4dp"
@@ -267,13 +267,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/imageView14"
-            app:layout_constraintTop_toBottomOf="@+id/imageView12"
+            app:layout_constraintStart_toStartOf="@+id/Historia2"
+            app:layout_constraintTop_toBottomOf="@+id/Entretenimiento2"
             app:layout_constraintVertical_bias="0.066"
             app:srcCompat="@drawable/Geografia" />
 
         <ImageView
-            android:id="@+id/imageView14"
+            android:id="@+id/Historia2"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginEnd="36dp"
@@ -283,13 +283,13 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/imageView15"
-            app:layout_constraintTop_toBottomOf="@+id/imageView13"
+            app:layout_constraintStart_toStartOf="@+id/Naturaleza2"
+            app:layout_constraintTop_toBottomOf="@+id/Geografia2"
             app:layout_constraintVertical_bias="0.321"
             app:srcCompat="@drawable/Historia" />
 
         <ImageView
-            android:id="@+id/imageView15"
+            android:id="@+id/Naturaleza2"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:alpha="0.5"
@@ -297,7 +297,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.566"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView14"
+            app:layout_constraintTop_toBottomOf="@+id/Historia2"
             app:layout_constraintVertical_bias="1.0"
             app:srcCompat="@drawable/Naturaleza" />
 
