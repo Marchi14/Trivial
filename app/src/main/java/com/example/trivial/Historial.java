@@ -42,14 +42,15 @@ public class Historial extends AppCompatActivity {
                 situacion="Activa";
             }
 
-            partida=partida+fila.getString(1)+  "    Situacion: " + situacion;
+            partida=partida+fila.getString(1)+  "                                   Situacion: " + situacion;
 
             do{
-                partida=partida+"\n-Jugador: "+fila.getString(0) +  "\n -Posición: " + fila.getString(3);
+                partida=partida+"\nJugador: "+fila.getString(0) +  "       Ranking: " + fila.getString(3);
 
             }while(fila.moveToNext());
 
-            ranking.add(partida);
+            ranking.add( partida);
+
 
         }else if(!fila.moveToFirst()){
             Toast.makeText(this, "No hay registros. Comienza una Nueva Partida.",Toast.LENGTH_SHORT).show();
@@ -59,6 +60,9 @@ public class Historial extends AppCompatActivity {
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ranking);
         list.setAdapter(adapter);
+
+
+
 
     }
 }
