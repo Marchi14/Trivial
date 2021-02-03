@@ -7,19 +7,22 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Timer;
 
 public class PreguntaActivity extends AppCompatActivity implements View.OnClickListener{
 
     Jugador jugador1,jugador2;
-    TextView pregunta;
+    TextView pregunta, time;
     boolean quesito;
     Button res1,res2,res3,res4;
     Button[] botones = new Button[4];
@@ -27,12 +30,14 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
     String resp_correcta;
     SQLiteDatabase db;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pregunta);
 
         pregunta=findViewById(R.id.TxPregunta);
+        time=findViewById(R.id.time);
         res1=findViewById(R.id.bRes1);
         res2=findViewById(R.id.bRes2);
         res3=findViewById(R.id.bRes3);
@@ -43,6 +48,26 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
         jugador2 = (Jugador) bundle.get("jugador 2");
         tema = bundle.getString("Tema");
         quesito = bundle.getBoolean("queso");
+
+        //timer
+        new CountDownTimer(21000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                time.setText(""+ millisUntilFinished / 1000);
+                if(millisUntilFinished<=11000 && millisUntilFinished>5000){
+                    time.setTextColor(Color.parseColor("#F9821F"));
+                }else if(millisUntilFinished<=6000){
+                    time.setTextColor(Color.parseColor("#F72211"));
+                }
+            }
+
+            public void onFinish() {
+                time.setText("0");
+                time.setTextColor(Color.parseColor("#F72211"));
+            }
+        }.start();
+
+
 
         for (Button b : botones)
             b.setOnClickListener(this);
