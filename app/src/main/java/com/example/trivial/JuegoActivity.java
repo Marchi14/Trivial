@@ -243,7 +243,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                         queso = findViewById(R.id.Naturaleza1);
                         queso.setImageAlpha(127);
                         break;
-                    case "Arte":
+                    case "Arte y Literatura":
                         queso = findViewById(R.id.Arte1);
                         queso.setImageAlpha(127);
                         break;
@@ -271,7 +271,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                         queso = findViewById(R.id.Naturaleza2);
                         queso.setImageAlpha(127);
                         break;
-                    case "Arte":
+                    case "Arte y Literatura":
                         queso = findViewById(R.id.Arte2);
                         queso.setImageAlpha(127);
                         break;
