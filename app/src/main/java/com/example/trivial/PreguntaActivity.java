@@ -68,6 +68,7 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
                 time.setText("0");
                 time.setTextColor(Color.parseColor("#F72211"));
                 intent.putExtra("acierto",false);
+                setResult(RESULT_OK, intent);
                 finish();
             }
         }.start();
