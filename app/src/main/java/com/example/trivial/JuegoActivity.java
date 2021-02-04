@@ -55,15 +55,22 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         nJugador1=findViewById(R.id.Nombre_Jugador);
         nJugador2=findViewById(R.id.n_Jugador2);
         Bundle b=getIntent().getExtras();
-        String n1=(String)b.get("player1");
-        String n2=(String)b.get("player2");
-        nJugador1.setText(n1);
-        nJugador2.setText(n2);
+        if (b.getInt("Partida",0)!=0){
 
-        jugador1 = new Jugador(n1);
-        jugador1.setTurno(true);
-        jugador2 = new Jugador(n2);
-        Turno.setText("Turno de "+n1);
+        }
+
+        else {
+            String n1 = (String) b.get("player1");
+            String n2 = (String) b.get("player2");
+            nJugador1.setText(n1);
+            nJugador2.setText(n2);
+
+            jugador1 = new Jugador(n1);
+            jugador1.setTurno(true);
+            jugador2 = new Jugador(n2);
+
+            Turno.setText("Turno de "+n1);
+        }
         bI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -113,10 +120,14 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         bI.setEnabled(false);
         bD.setEnabled(false);
         Intent intent = new Intent(JuegoActivity.this,PreguntaActivity.class);
-        if (jugador1.isTurno())
-            intent.putExtra("Tema",GetTypeofPregunta(bmp.getPixel((int) (cursor1.getX()+cursor1.getWidth()/2), (int) (cursor1.getY()+cursor1.getHeight()/2))));
-        else if (jugador2.isTurno())
-            intent.putExtra("Tema",GetTypeofPregunta(bmp.getPixel((int) (cursor2.getX()+cursor2.getWidth()/2), (int) (cursor2.getY()+cursor2.getHeight()/2))));
+        if (jugador1.isTurno()){
+            tema=GetTypeofPregunta(bmp.getPixel((int) (cursor1.getX()+cursor1.getWidth()/2), (int) (cursor1.getY()+cursor1.getHeight()/2)));
+            intent.putExtra("Tema",tema);
+        }
+        else if (jugador2.isTurno()){
+            tema=GetTypeofPregunta(bmp.getPixel((int) (cursor2.getX()+cursor2.getWidth()/2), (int) (cursor2.getY()+cursor2.getHeight()/2)));
+            intent.putExtra("Tema",tema);
+        }
         intent.putExtra("queso",quesito);
         intent.putExtra("jugador 1",jugador1);
         intent.putExtra("jugador 2",jugador2);
@@ -223,7 +234,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         if (tirada)
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 Random rng = new Random();
-                ndado = rng.nextInt(6)+1;
+                //ndado = rng.nextInt(6)+1;
                 switch (ndado) {
                     case 1:
                         dado.setImageResource(R.drawable.dado1);
@@ -273,32 +284,32 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 switch(tema){
                     case "Ocio y Deporte":
                         queso = findViewById(R.id.Deportes1);
-                        queso.setBackgroundTintList(null);
+                        queso.setImageTintList(null);
                         jugador1.setQuesito_naranja(true);
                         break;
                     case "Historia":
                         queso = findViewById(R.id.Historia1);
-                        queso.setBackgroundTintList(null);
+                        queso.setImageTintList(null);
                         jugador1.setQuesito_amarillo(true);
                         break;
                     case "Ciencias y naturaleza":
                         queso = findViewById(R.id.Naturaleza1);
-                        queso.setBackgroundTintList(null);
+                        queso.setImageTintList(null);
                         jugador1.setQuesito_verde(true);
                         break;
                     case "Arte y Literatura":
                         queso = findViewById(R.id.Arte1);
-                        queso.setBackgroundTintList(null);
+                        queso.setImageTintList(null);
                         jugador1.setQuesito_morado(true);
                         break;
                     case "Geografía":
                         queso = findViewById(R.id.Geografia1);
-                        queso.setBackgroundTintList(null);
+                        queso.setImageTintList(null);
                         jugador1.setQuesito_azul(true);
                         break;
                     case "Entretenimiento":
                         queso = findViewById(R.id.Entretenimiento1);
-                        queso.setBackgroundTintList(null);
+                        queso.setImageTintList(null);
                         jugador1.setQuesito_rosa(true);
                         break;
                     default:
@@ -309,32 +320,32 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 switch(tema){
                     case "Ocio y Deporte":
                         queso = findViewById(R.id.Deportes2);
-                        queso.setBackgroundTintList(null);
+                        queso.setImageTintList(null);
                         jugador2.setQuesito_naranja(true);
                         break;
                     case "Historia":
                         queso = findViewById(R.id.Historia2);
-                        queso.setBackgroundTintList(null);
+                        queso.setImageTintList(null);
                         jugador2.setQuesito_amarillo(true);
                         break;
                     case "Ciencias y naturaleza":
                         queso = findViewById(R.id.Naturaleza2);
-                        queso.setBackgroundTintList(null);
+                        queso.setImageTintList(null);
                         jugador2.setQuesito_verde(true);
                         break;
                     case "Arte y Literatura":
                         queso = findViewById(R.id.Arte2);
-                        queso.setBackgroundTintList(null);
+                        queso.setImageTintList(null);
                         jugador2.setQuesito_morado(true);
                         break;
                     case "Geografía":
                         queso = findViewById(R.id.Geografia2);
-                        queso.setBackgroundTintList(null);
+                        queso.setImageTintList(null);
                         jugador2.setQuesito_azul(true);
                         break;
                     case "Entretenimiento":
                         queso = findViewById(R.id.Entretenimiento2);
-                        queso.setBackgroundTintList(null);
+                        queso.setImageTintList(null);
                         jugador2.setQuesito_rosa(true);
                         break;
                 }
