@@ -31,7 +31,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     double cX, cY;
     String tema;
     Point[] points = new Point[2];
-    double angulo = Math.toRadians((double)360 / 48 + 0.2d);
+    double angulo = Math.toRadians((double)360 / 48);
     int ndado = 1;
     boolean tirada=true,quesito=false;
 
@@ -188,7 +188,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         if (tirada)
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 Random rng = new Random();
-                //ndado = rng.nextInt(6)+1;
+                ndado = rng.nextInt(6)+1;
                 switch (ndado) {
                     case 1:
                         dado.setImageResource(R.drawable.dado1);
