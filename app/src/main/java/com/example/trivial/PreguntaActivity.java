@@ -110,30 +110,36 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
                         tema = "CIENCIAS Y NATURALEZA";
                         break;
                 }
-                Cursor c = db.rawQuery("SELECT id_pregunta,enunciado FROM pregunta ORDER BY RANDOM() LIMIT 1" +
+                Cursor c = db.rawQuery("SELECT id_pregunta,enunciado FROM pregunta LIMIT 1" +
                         " WHERE Tipo = '" + tema + "';", null);
+
+                if (c.moveToFirst()) {
+                    String enunciado = c.getString(1);
+                    pregunta.setText(enunciado);
+                    Respuestas(c.getInt(0));
+                }
             }
         }
         else {
             int rng;
             switch (tema) {
                 case "Historia":
-                    rng = (int) (Math.random() * (6 - 1 + 1) + 1);
+                    rng = (int) (Math.random() * (5 - 1 + 1) + 1);
                     break;
                 case "Geografía":
-                    rng = (int) (Math.random() * (11 - 6 + 1) + 6);
+                    rng = (int) (Math.random() * (10 - 6 + 1) + 6);
                     break;
                 case "Ocio y Deporte":
-                    rng = (int) (Math.random() * (16 - 11 + 1) + 11);
+                    rng = (int) (Math.random() * (15 - 11 + 1) + 11);
                     break;
                 case "Ciencias y naturaleza":
-                    rng = (int) (Math.random() * (21 - 16 + 1) + 16);
+                    rng = (int) (Math.random() * (20 - 16 + 1) + 16);
                     break;
                 case "Arte y Literatura":
-                    rng = (int) (Math.random() * (26 - 21 + 1) + 21);
+                    rng = (int) (Math.random() * (25 - 21 + 1) + 21);
                     break;
                 case "Entretenimiento":
-                    rng = (int) (Math.random() * (31 - 26 + 1) + 26);
+                    rng = (int) (Math.random() * (30 - 26 + 1) + 26);
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + tema);
@@ -150,7 +156,7 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void Respuestas(int id) {
-        Cursor c=db.rawQuery("SELECT texto,respuestaCorrecta FROM respuesta ORDER BY RANDOM() WHERE id_preg = "+id+";",null);
+        Cursor c=db.rawQuery("SELECT texto,respuestaCorrecta FROM respuesta WHERE id_preg = "+id+";",null);
         if (c.moveToFirst()) {
             int i=0;
             do {

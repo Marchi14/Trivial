@@ -188,7 +188,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         if (tirada)
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 Random rng = new Random();
-                //ndado = rng.nextInt(6)+1;
+                ndado = rng.nextInt(6)+1;
                 switch (ndado) {
                     case 1:
                         dado.setImageResource(R.drawable.dado1);
