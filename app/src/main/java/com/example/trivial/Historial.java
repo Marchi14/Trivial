@@ -156,6 +156,7 @@ public class Historial extends AppCompatActivity {
 
                 }while(c.moveToNext());
 
+                intent.putExtra("Partida", "s");
             }
             startActivity(intent);
 
