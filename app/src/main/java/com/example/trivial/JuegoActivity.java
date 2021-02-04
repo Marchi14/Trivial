@@ -8,7 +8,6 @@ import android.graphics.Point;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Layout;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -25,7 +24,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     static final int ASK_QUESTION_REQUEST = 100;
     Jugador jugador1,jugador2;
     Bitmap bmp;
-    ImageView tablero, cursor, dado;
+    ImageView tablero, cursor1, cursor2, dado;
     TextView Turno,nJugador1, nJugador2;
     Button bI, bD;
     double cX, cY;
@@ -42,7 +41,8 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_juego);
         tablero = findViewById(R.id.tablero);
-        cursor = findViewById(R.id.cursor);
+        cursor1 = findViewById(R.id.cursor1);
+        cursor2 = findViewById(R.id.cursor2);
         bI = findViewById(R.id.bIzquierda);
         bD = findViewById(R.id.bDerecha);
         bmp = ((BitmapDrawable) tablero.getDrawable()).getBitmap();
@@ -112,7 +112,10 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         bI.setEnabled(false);
         bD.setEnabled(false);
         Intent intent = new Intent(JuegoActivity.this,PreguntaActivity.class);
-        intent.putExtra("Tema",GetTypeofPregunta(bmp.getPixel((int) (cursor.getX()+cursor.getWidth()/2), (int) (cursor.getY()+cursor.getHeight()/2))));
+        if (jugador1.isTurno())
+            intent.putExtra("Tema",GetTypeofPregunta(bmp.getPixel((int) (cursor1.getX()+cursor1.getWidth()/2), (int) (cursor1.getY()+cursor1.getHeight()/2))));
+        else if (jugador2.isTurno())
+            intent.putExtra("Tema",GetTypeofPregunta(bmp.getPixel((int) (cursor2.getX()+cursor2.getWidth()/2), (int) (cursor2.getY()+cursor2.getHeight()/2))));
         intent.putExtra("queso",quesito);
         intent.putExtra("jugador 1",jugador1);
         intent.putExtra("jugador 2",jugador2);
@@ -121,29 +124,46 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     }
 
     private void MoverIzquierda() {
-        cursor.setX(points[0].x);
-        cursor.setY(points[0].y);
+        if (jugador1.isTurno()){
+            cursor1.setX(points[0].x);
+            cursor1.setY(points[0].y);
+        }
+        else if(jugador2.isTurno()){
+            cursor2.setX(points[0].x);
+            cursor2.setY(points[0].y);
+        }
     }
 
     private void MoverDerecha() {
-        cursor.setX(points[1].x);
-        cursor.setY(points[1].y);
+        if (jugador1.isTurno()){
+            cursor1.setX(points[0].x);
+            cursor1.setY(points[0].y);
+        }
+        else if(jugador2.isTurno()){
+            cursor2.setX(points[0].x);
+            cursor2.setY(points[0].y);
+        }
     }
 
     private void DetectarCasillas(Button bI, Button bD) {
         Point Izq;
         Point Der;
-        cX = cursor.getX();
-        cY = cursor.getY();
+        if (jugador1.isTurno()){
+            cX = cursor1.getX();
+            cY = cursor1.getY();
+        }
+        else if(jugador2.isTurno()){
+            cX = cursor2.getX();
+            cY = cursor2.getY();
+        }
         Izq = Izquierda(cX, cY);
         Der = Derecha(cX, cY);
-
-        int pixel = bmp.getPixel(Izq.x+cursor.getWidth()/2, Izq.y+cursor.getHeight()/2);
+        int pixel = bmp.getPixel(Izq.x+cursor1.getWidth()/2, Izq.y+cursor1.getHeight()/2);
         tema = GetTypeofPregunta(pixel);
         if (tema != null)
             bI.setText(tema);
         bI.setBackgroundColor(pixel);
-        pixel = bmp.getPixel(Der.x+cursor.getWidth()/2, Der.y+cursor.getHeight()/2);
+        pixel = bmp.getPixel(Der.x+cursor1.getWidth()/2, Der.y+cursor1.getHeight()/2);
         tema = GetTypeofPregunta(pixel);
         if (tema != null)
             bD.setText(tema);

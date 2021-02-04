@@ -49,18 +49,30 @@
         tools:visibility="visible" />
 
     <ImageView
-        android:id="@+id/cursor"
-        android:layout_width="12dp"
-        android:layout_height="12dp"
+        android:id="@+id/cursor1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:adjustViewBounds="false"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/tablero"
         app:layout_constraintEnd_toEndOf="@+id/tablero"
-        app:layout_constraintHorizontal_bias="0.476"
+        app:layout_constraintHorizontal_bias="0.468"
         app:layout_constraintStart_toStartOf="@+id/tablero"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.978"
-        app:srcCompat="@drawable/cursor" />
+        app:layout_constraintVertical_bias="0.968"
+        app:srcCompat="@drawable/cursor1" />
+
+    <ImageView
+        android:id="@+id/cursor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/tablero"
+        app:layout_constraintEnd_toEndOf="@+id/tablero"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="@+id/tablero"
+        app:layout_constraintTop_toTopOf="@+id/tablero"
+        app:layout_constraintVertical_bias="0.038"
+        app:srcCompat="@drawable/cursor2" />
 
     <ImageView
         android:id="@+id/dado"
@@ -262,8 +274,10 @@
             android:layout_marginLeft="4dp"
             android:layout_marginTop="8dp"
             android:alpha="1"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Entretenimiento2"
+            app:layout_constraintVertical_bias="0.006"
             app:srcCompat="@drawable/historia" />
 
         <ImageView
