@@ -30,11 +30,6 @@ public class Sqlite extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("DROP TABLE IF EXISTS partida");
-        db.execSQL("DROP TABLE IF EXISTS jugador");
-        db.execSQL("DROP TABLE IF EXISTS historial");
-        db.execSQL("DROP TABLE IF EXISTS pregunta");
-        db.execSQL("DROP TABLE IF EXISTS respuesta");
         db.execSQL(TABLE_PARTIDA_CREATE);
         db.execSQL(TABLE_JUGADOR_CREATE);
         db.execSQL(TABLE_HISTORIAL_CREATE);
