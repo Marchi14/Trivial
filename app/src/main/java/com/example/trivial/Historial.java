@@ -92,7 +92,6 @@ public class Historial extends AppCompatActivity {
 
 
 
-
         if(db!=null){
 
             Cursor c = db.rawQuery("SELECT * FROM jugador where id_partida= "+idPartida+";",null);

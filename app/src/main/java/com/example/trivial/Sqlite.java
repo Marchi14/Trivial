@@ -11,6 +11,7 @@ public class Sqlite extends SQLiteOpenHelper{
             "quesitoAzul BOOLEAN,quesitoMorado BOOLEAN, quesitoNaranja BOOLEAN,quesitoVerde BOOLEAN, turno BOOLEAN, " +
             "id_partida INTEGER  REFERENCES id_partida)";
 
+
     private static final String TABLE_PARTIDA_CREATE="CREATE TABLE partida(id_partida INTEGER PRIMARY KEY, activa BOOLEAN)";
 
     private static final String TABLE_HISTORIAL_CREATE="CREATE TABLE historial(id_par INTEGER REFERENCES id_partida, " +
@@ -30,6 +31,7 @@ public class Sqlite extends SQLiteOpenHelper{
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         db.execSQL(TABLE_PARTIDA_CREATE);
         db.execSQL(TABLE_JUGADOR_CREATE);
         db.execSQL(TABLE_HISTORIAL_CREATE);
