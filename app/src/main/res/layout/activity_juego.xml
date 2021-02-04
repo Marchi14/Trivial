@@ -56,10 +56,10 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/tablero"
         app:layout_constraintEnd_toEndOf="@+id/tablero"
-        app:layout_constraintHorizontal_bias="0.962"
+        app:layout_constraintHorizontal_bias="0.917"
         app:layout_constraintStart_toStartOf="@+id/tablero"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.398"
+        app:layout_constraintVertical_bias="0.291"
         app:srcCompat="@drawable/cursor1" />
 
     <ImageView
@@ -68,10 +68,10 @@
         android:layout_height="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tablero"
         app:layout_constraintEnd_toEndOf="@+id/tablero"
-        app:layout_constraintHorizontal_bias="0.045"
+        app:layout_constraintHorizontal_bias="0.063"
         app:layout_constraintStart_toStartOf="@+id/tablero"
         app:layout_constraintTop_toTopOf="@+id/tablero"
-        app:layout_constraintVertical_bias="0.585"
+        app:layout_constraintVertical_bias="0.644"
         app:srcCompat="@drawable/cursor2" />
 
     <ImageView
