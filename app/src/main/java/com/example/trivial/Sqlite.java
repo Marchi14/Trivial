@@ -38,6 +38,7 @@ public class Sqlite extends SQLiteOpenHelper{
         db.execSQL(TABLE_PREGUNTA_CREATE);
         db.execSQL(TABLE_RESPUESTA_CREATE);
 
+
         db.execSQL( "INSERT INTO partida (id_partida, activa) " +
                 "values(1,0)");
 
