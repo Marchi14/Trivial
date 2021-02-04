@@ -89,78 +89,90 @@ public class Historial extends AppCompatActivity {
         db = dbHelper.getWritableDatabase();
 
         Intent intent = new Intent(this,JuegoActivity.class);
+        Intent intent2 = new Intent(this,MainActivity.class);
 
 
 
         if(db!=null){
 
+            Cursor c1 = db.rawQuery("SELECT id_partida, activa FROM partida where id_partida= "+idPartida+";",null);
             Cursor c = db.rawQuery("SELECT * FROM jugador where id_partida= "+idPartida+";",null);
 
-            int i=0;
+            c1.moveToFirst();
+            if(c1.getString(1).toString().equals("1")){
+                int i=0;
 
-            String[] jugador = new String [10];
-            String[] jugador2 = new String [10];
-
-
-
-            if(c.moveToFirst()){
-                do{
-                    if(i==0){
-                        jugador[0] = c.getString(1);
-                        jugador[1] = c.getString(2);
-                        jugador[2] = c.getString(3);
-                        jugador[3] = c.getString(4);
-                        jugador[4] = c.getString(5);
-                        jugador[5] = c.getString(6);
-                        jugador[6] = c.getString(7);
-                        jugador[7] = c.getString(8);
-                        jugador[8] = c.getString(9);
-                        jugador[9] = c.getString(10);
-
-                        intent.putExtra("player1", jugador[0]);
-                        intent.putExtra("posX", jugador[1]);
-                        intent.putExtra("posY", jugador[2]);
-                        intent.putExtra("quesoA", jugador[3]);
-                        intent.putExtra("quesoR", jugador[4]);
-                        intent.putExtra("quesoAz", jugador[5]);
-                        intent.putExtra("quesoM", jugador[6]);
-                        intent.putExtra("quesoN", jugador[7]);
-                        intent.putExtra("quesoV", jugador[8]);
-                        intent.putExtra("turno", jugador[9]);
+                String[] jugador = new String [10];
+                String[] jugador2 = new String [10];
 
 
-                        i++;
-                    }else {
-                        jugador2[0] = c.getString(1);;
-                        jugador2[1] = c.getString(2);
-                        jugador2[2] = c.getString(3);
-                        jugador2[3] = c.getString(4);
-                        jugador2[4] = c.getString(5);
-                        jugador2[5] = c.getString(6);
-                        jugador2[6] = c.getString(7);
-                        jugador2[7] = c.getString(8);
-                        jugador2[8] = c.getString(9);
-                        jugador[9] = c.getString(10);
 
-                        intent.putExtra("player2", jugador2[0]);
-                        intent.putExtra("2posX", jugador2[1]);
-                        intent.putExtra("2posY", jugador2[2]);
-                        intent.putExtra("2quesoA", jugador2[3]);
-                        intent.putExtra("2quesoR", jugador2[4]);
-                        intent.putExtra("2quesoAz", jugador2[5]);
-                        intent.putExtra("2quesoM", jugador2[6]);
-                        intent.putExtra("2quesoN", jugador2[7]);
-                        intent.putExtra("2quesoV", jugador2[8]);
-                        intent.putExtra("2turno", jugador2[9]);
-                    }
+                if(c.moveToFirst()){
+                    do{
+                        if(i==0){
+                            jugador[0] = c.getString(1);
+                            jugador[1] = c.getString(2);
+                            jugador[2] = c.getString(3);
+                            jugador[3] = c.getString(4);
+                            jugador[4] = c.getString(5);
+                            jugador[5] = c.getString(6);
+                            jugador[6] = c.getString(7);
+                            jugador[7] = c.getString(8);
+                            jugador[8] = c.getString(9);
+                            jugador[9] = c.getString(10);
 
-                }while(c.moveToNext());
+                            intent.putExtra("player1", jugador[0]);
+                            intent.putExtra("posX", jugador[1]);
+                            intent.putExtra("posY", jugador[2]);
+                            intent.putExtra("quesoA", jugador[3]);
+                            intent.putExtra("quesoR", jugador[4]);
+                            intent.putExtra("quesoAz", jugador[5]);
+                            intent.putExtra("quesoM", jugador[6]);
+                            intent.putExtra("quesoN", jugador[7]);
+                            intent.putExtra("quesoV", jugador[8]);
+                            intent.putExtra("turno", jugador[9]);
 
-                intent.putExtra("Partida", "s");
+
+                            i++;
+                        }else {
+                            jugador2[0] = c.getString(1);;
+                            jugador2[1] = c.getString(2);
+                            jugador2[2] = c.getString(3);
+                            jugador2[3] = c.getString(4);
+                            jugador2[4] = c.getString(5);
+                            jugador2[5] = c.getString(6);
+                            jugador2[6] = c.getString(7);
+                            jugador2[7] = c.getString(8);
+                            jugador2[8] = c.getString(9);
+                            jugador[9] = c.getString(10);
+
+                            intent.putExtra("player2", jugador2[0]);
+                            intent.putExtra("2posX", jugador2[1]);
+                            intent.putExtra("2posY", jugador2[2]);
+                            intent.putExtra("2quesoA", jugador2[3]);
+                            intent.putExtra("2quesoR", jugador2[4]);
+                            intent.putExtra("2quesoAz", jugador2[5]);
+                            intent.putExtra("2quesoM", jugador2[6]);
+                            intent.putExtra("2quesoN", jugador2[7]);
+                            intent.putExtra("2quesoV", jugador2[8]);
+                            intent.putExtra("2turno", jugador2[9]);
+                        }
+
+                    }while(c.moveToNext());
+
+                    intent.putExtra("Partida", 1);
+                    startActivity(intent);
+                }
+            }else {
+
+                startActivity(intent2);
             }
-            startActivity(intent);
+
+
+            }else {
+                startActivity(intent2);
+            }
 
         }
 
     }
-}
