@@ -82,8 +82,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 tirada=true;
             }
         });
-
-
     }
 
     @Override
