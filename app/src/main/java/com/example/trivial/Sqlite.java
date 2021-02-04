@@ -45,7 +45,7 @@ public class Sqlite extends SQLiteOpenHelper{
                 "values('Jorge', 2, 3, 1, 1, 1, 0, 0, 0, 1, 1)");
 
         db.execSQL( "INSERT INTO jugador (player,casillaX,casillaY,quesitoAmarillo,quesitoRosa,quesitoAzul,quesitoMorado,quesitoNaranja,quesitoVerde,turno,id_partida) " +
-                "values('Marcos', 5, 6, 0, 0, 0, 0, 1, 1, 0, 1)");
+                "values('Marcos', 5, 6, 0, 0, 0, 0, 1, 1, 1, 1)");
 
         db.execSQL( "INSERT INTO historial (id_par, id_player, posicion) " +
                 "values(1,1,1)");
