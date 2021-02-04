@@ -85,6 +85,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -136,12 +137,12 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
 
     private void MoverDerecha() {
         if (jugador1.isTurno()){
-            cursor1.setX(points[0].x);
-            cursor1.setY(points[0].y);
+            cursor1.setX(points[1].x);
+            cursor1.setY(points[1].y);
         }
         else if(jugador2.isTurno()){
-            cursor2.setX(points[0].x);
-            cursor2.setY(points[0].y);
+            cursor2.setX(points[1].x);
+            cursor2.setY(points[1].y);
         }
     }
 
@@ -264,6 +265,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         return null;
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     private void Quesito(boolean acertado){
         if (quesito && acertado){
             ImageView queso;
@@ -271,32 +273,32 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 switch(tema){
                     case "Ocio y Deporte":
                         queso = findViewById(R.id.Deportes1);
-                        queso.setImageAlpha(90);
+                        queso.setBackgroundTintList(null);
                         jugador1.setQuesito_naranja(true);
                         break;
                     case "Historia":
                         queso = findViewById(R.id.Historia1);
-                        queso.setImageAlpha(90);
+                        queso.setBackgroundTintList(null);
                         jugador1.setQuesito_amarillo(true);
                         break;
                     case "Ciencias y naturaleza":
                         queso = findViewById(R.id.Naturaleza1);
-                        queso.setImageAlpha(90);
+                        queso.setBackgroundTintList(null);
                         jugador1.setQuesito_verde(true);
                         break;
                     case "Arte y Literatura":
                         queso = findViewById(R.id.Arte1);
-                        queso.setImageAlpha(90);
+                        queso.setBackgroundTintList(null);
                         jugador1.setQuesito_morado(true);
                         break;
                     case "Geografía":
                         queso = findViewById(R.id.Geografia1);
-                        queso.setImageAlpha(90);
+                        queso.setBackgroundTintList(null);
                         jugador1.setQuesito_azul(true);
                         break;
                     case "Entretenimiento":
                         queso = findViewById(R.id.Entretenimiento1);
-                        queso.setImageAlpha(90);
+                        queso.setBackgroundTintList(null);
                         jugador1.setQuesito_rosa(true);
                         break;
                     default:
@@ -307,32 +309,32 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 switch(tema){
                     case "Ocio y Deporte":
                         queso = findViewById(R.id.Deportes2);
-                        queso.setImageAlpha(90);
+                        queso.setBackgroundTintList(null);
                         jugador2.setQuesito_naranja(true);
                         break;
                     case "Historia":
                         queso = findViewById(R.id.Historia2);
-                        queso.setImageAlpha(90);
+                        queso.setBackgroundTintList(null);
                         jugador2.setQuesito_amarillo(true);
                         break;
                     case "Ciencias y naturaleza":
                         queso = findViewById(R.id.Naturaleza2);
-                        queso.setImageAlpha(90);
+                        queso.setBackgroundTintList(null);
                         jugador2.setQuesito_verde(true);
                         break;
                     case "Arte y Literatura":
                         queso = findViewById(R.id.Arte2);
-                        queso.setImageAlpha(90);
+                        queso.setBackgroundTintList(null);
                         jugador2.setQuesito_morado(true);
                         break;
                     case "Geografía":
                         queso = findViewById(R.id.Geografia2);
-                        queso.setImageAlpha(90);
+                        queso.setBackgroundTintList(null);
                         jugador2.setQuesito_azul(true);
                         break;
                     case "Entretenimiento":
                         queso = findViewById(R.id.Entretenimiento2);
-                        queso.setImageAlpha(90);
+                        queso.setBackgroundTintList(null);
                         jugador2.setQuesito_rosa(true);
                         break;
                 }

@@ -140,7 +140,9 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.828"
-            app:srcCompat="@drawable/arte" />
+            app:srcCompat="@drawable/arte"
+            app:tintMode="src_in"
+            app:tint="#FFFFFF" />
 
         <ImageView
             android:id="@+id/Deportes1"
@@ -153,7 +155,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.828"
-            app:srcCompat="@drawable/deporte" />
+            app:srcCompat="@drawable/deporte"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/Entretenimiento1"
@@ -165,7 +168,8 @@
             app:layout_constraintEnd_toStartOf="@+id/Geografia1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/entretenimiento" />
+            app:srcCompat="@drawable/entretenimiento"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/Geografia1"
@@ -177,7 +181,8 @@
             android:alpha="1"
             app:layout_constraintBottom_toTopOf="@+id/Naturaleza1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/geografia" />
+            app:srcCompat="@drawable/geografia"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/Historia1"
@@ -189,7 +194,8 @@
             app:layout_constraintEnd_toStartOf="@+id/Naturaleza1"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/historia" />
+            app:srcCompat="@drawable/historia"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/Naturaleza1"
@@ -201,7 +207,8 @@
             android:alpha="1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:srcCompat="@drawable/naturaleza" />
+            app:srcCompat="@drawable/naturaleza"
+            app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -226,7 +233,8 @@
             android:alpha="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Arte2"
-            app:srcCompat="@drawable/entretenimiento" />
+            app:srcCompat="@drawable/entretenimiento"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/Arte2"
@@ -238,7 +246,8 @@
             app:layout_constraintHorizontal_bias="0.333"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/arte" />
+            app:srcCompat="@drawable/arte"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/Deportes2"
@@ -250,7 +259,8 @@
             android:alpha="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/deporte" />
+            app:srcCompat="@drawable/deporte"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/Geografia2"
@@ -264,7 +274,8 @@
             app:layout_constraintHorizontal_bias="0.285"
             app:layout_constraintStart_toEndOf="@+id/Entretenimiento2"
             app:layout_constraintTop_toBottomOf="@+id/Deportes2"
-            app:srcCompat="@drawable/geografia" />
+            app:srcCompat="@drawable/geografia"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/Historia2"
@@ -278,7 +289,8 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/Entretenimiento2"
             app:layout_constraintVertical_bias="0.006"
-            app:srcCompat="@drawable/historia" />
+            app:srcCompat="@drawable/historia"
+            app:tint="@color/white" />
 
         <ImageView
             android:id="@+id/Naturaleza2"
@@ -295,7 +307,8 @@
             app:layout_constraintStart_toEndOf="@+id/Historia2"
             app:layout_constraintTop_toBottomOf="@+id/Geografia2"
             app:layout_constraintVertical_bias="1.0"
-            app:srcCompat="@drawable/naturaleza" />
+            app:srcCompat="@drawable/naturaleza"
+            app:tint="@color/white" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
