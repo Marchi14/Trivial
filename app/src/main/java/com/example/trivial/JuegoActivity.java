@@ -26,7 +26,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     Jugador jugador1,jugador2;
     Bitmap bmp;
     ImageView tablero, cursor, dado;
-    TextView nJugador1, nJugador2;
+    TextView Turno,nJugador1, nJugador2;
     Button bI, bD;
     double cX, cY;
     String tema;
@@ -47,6 +47,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         bD = findViewById(R.id.bDerecha);
         bmp = ((BitmapDrawable) tablero.getDrawable()).getBitmap();
         bmp = bmp.copy(Bitmap.Config.ARGB_8888, true);
+        Turno = findViewById(R.id.Turno);
         dado = findViewById(R.id.dado);
         dado.setOnTouchListener(this);
 
@@ -62,7 +63,7 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         jugador1 = new Jugador(n1);
         jugador1.setTurno(true);
         jugador2 = new Jugador(n2);
-
+        Turno.setText("Turno de "+n1);
         bI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -94,11 +95,14 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
             if(jugador1.isTurno() && !acertado){
                 jugador1.setTurno(false);
                 jugador2.setTurno(true);
+                Turno.setText("Turno de "+jugador2.getNombre());
             }
             else if(jugador2.isTurno() && !acertado){
                 jugador1.setTurno(true);
                 jugador2.setTurno(false);
+                Turno.setText("Turno de "+jugador1.getNombre());
             }
+
             Quesito(acertado);
         }
     }
@@ -154,32 +158,44 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
     private Point Derecha(double cX, double cY) {
         double fX;
         double fY;
-        double h = 540;
+        double h = bmp.getWidth()/2;
         double ang = angulo * ndado;
         double hX = cX - h;
         double hY = cY - h;
-        fX = (hX * Math.cos(ang)) + (hY * Math.sin(-ang));
-        fY = (hX * Math.sin(ang)) + (hY * Math.cos(ang));
+        if(cY<h){
+            fX = (hX * Math.cos(ang)) + (hY * Math.sin(-ang));
+            fY = (hX * Math.sin(ang)) + (hY * Math.cos(ang));
+        }
+        else{
+            fX = (hX * Math.cos(ang)) + (hY * Math.sin(ang));
+            fY = (hX * Math.sin(-ang)) + (hY * Math.cos(ang));
+        }
         fX += h;
         fY += h;
-        int fXi = (int) fX;
-        int fYi = (int) fY;
+        int fXi = (int) Math.round(fX);
+        int fYi = (int) Math.round(fY);
         return new Point(fXi, fYi);
     }
 
     private Point Izquierda(double cX, double cY) {
         double fX;
         double fY;
-        double h = 540;
+        double h = bmp.getWidth()/2;
         double ang = angulo * ndado;
         double hX = cX - h;
         double hY = cY - h;
-        fX = (hX * Math.cos(ang)) + (hY * Math.sin(ang));
-        fY = (hX * Math.sin(-ang)) + (hY * Math.cos(ang));
+        if (cY<h){
+            fX = (hX * Math.cos(ang)) + (hY * Math.sin(ang));
+            fY = (hX * Math.sin(-ang)) + (hY * Math.cos(ang));
+        }
+        else{
+            fX = (hX * Math.cos(ang)) + (hY * Math.sin(-ang));
+            fY = (hX * Math.sin(ang)) + (hY * Math.cos(ang));
+        }
         fX += h;
         fY += h;
-        int fXi = (int) fX;
-        int fYi = (int) fY;
+        int fXi = (int) Math.round(fX);
+        int fYi = (int) Math.round(fY);
         return new Point(fXi, fYi);
     }
 
@@ -237,66 +253,68 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
                 switch(tema){
                     case "Ocio y Deporte":
                         queso = findViewById(R.id.Deportes1);
-                        queso.setImageAlpha(127);
+                        queso.setImageAlpha(90);
                         jugador1.setQuesito_naranja(true);
                         break;
                     case "Historia":
                         queso = findViewById(R.id.Historia1);
-                        queso.setImageAlpha(127);
+                        queso.setImageAlpha(90);
                         jugador1.setQuesito_amarillo(true);
                         break;
                     case "Ciencias y naturaleza":
                         queso = findViewById(R.id.Naturaleza1);
-                        queso.setImageAlpha(127);
+                        queso.setImageAlpha(90);
                         jugador1.setQuesito_verde(true);
                         break;
                     case "Arte y Literatura":
                         queso = findViewById(R.id.Arte1);
-                        queso.setImageAlpha(127);
+                        queso.setImageAlpha(90);
                         jugador1.setQuesito_morado(true);
                         break;
                     case "Geografía":
                         queso = findViewById(R.id.Geografia1);
-                        queso.setImageAlpha(127);
+                        queso.setImageAlpha(90);
                         jugador1.setQuesito_azul(true);
                         break;
                     case "Entretenimiento":
                         queso = findViewById(R.id.Entretenimiento1);
-                        queso.setImageAlpha(127);
+                        queso.setImageAlpha(90);
                         jugador1.setQuesito_rosa(true);
                         break;
+                    default:
+                        throw new IllegalStateException("Unexpected value: " + tema);
                 }
             }
             else if(jugador2.isTurno()){
                 switch(tema){
                     case "Ocio y Deporte":
                         queso = findViewById(R.id.Deportes2);
-                        queso.setImageAlpha(127);
+                        queso.setImageAlpha(90);
                         jugador2.setQuesito_naranja(true);
                         break;
                     case "Historia":
                         queso = findViewById(R.id.Historia2);
-                        queso.setImageAlpha(127);
+                        queso.setImageAlpha(90);
                         jugador2.setQuesito_amarillo(true);
                         break;
                     case "Ciencias y naturaleza":
                         queso = findViewById(R.id.Naturaleza2);
-                        queso.setImageAlpha(127);
+                        queso.setImageAlpha(90);
                         jugador2.setQuesito_verde(true);
                         break;
                     case "Arte y Literatura":
                         queso = findViewById(R.id.Arte2);
-                        queso.setImageAlpha(127);
+                        queso.setImageAlpha(90);
                         jugador2.setQuesito_morado(true);
                         break;
                     case "Geografía":
                         queso = findViewById(R.id.Geografia2);
-                        queso.setImageAlpha(127);
+                        queso.setImageAlpha(90);
                         jugador2.setQuesito_azul(true);
                         break;
                     case "Entretenimiento":
                         queso = findViewById(R.id.Entretenimiento2);
-                        queso.setImageAlpha(127);
+                        queso.setImageAlpha(90);
                         jugador2.setQuesito_rosa(true);
                         break;
                 }

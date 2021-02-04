@@ -7,7 +7,7 @@
 
     <ImageView
         android:id="@+id/tablero"
-        android:layout_width="1080px"
+        android:layout_width="0dp"
         android:layout_height="1080px"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -55,10 +55,10 @@
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/tablero"
         app:layout_constraintEnd_toEndOf="@+id/tablero"
-        app:layout_constraintHorizontal_bias="0.961"
+        app:layout_constraintHorizontal_bias="0.476"
         app:layout_constraintStart_toStartOf="@+id/tablero"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.471"
+        app:layout_constraintVertical_bias="0.978"
         app:srcCompat="@drawable/cursor" />
 
     <ImageView
@@ -102,14 +102,14 @@
         android:textColor="#070707"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.547"
         app:layout_constraintStart_toEndOf="@+id/Nombre_Jugador"
         app:layout_constraintTop_toBottomOf="@+id/tablero" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Quesos1"
-        android:layout_width="146dp"
-        android:layout_height="397dp"
+        android:layout_width="123dp"
+        android:layout_height="400dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/Quesos2"
         app:layout_constraintHorizontal_bias="0.0"
@@ -194,8 +194,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/Quesos2"
-        android:layout_width="143dp"
-        android:layout_height="398dp"
+        android:layout_width="136dp"
+        android:layout_height="399dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -222,7 +222,7 @@
             android:layout_marginTop="48dp"
             android:alpha="1"
             app:layout_constraintEnd_toStartOf="@+id/Deportes2"
-            app:layout_constraintHorizontal_bias="0.222"
+            app:layout_constraintHorizontal_bias="0.333"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/arte" />
@@ -283,5 +283,16 @@
             app:srcCompat="@drawable/naturaleza" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/Turno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/bIzquierda"
+        app:layout_constraintEnd_toStartOf="@+id/n_Jugador2"
+        app:layout_constraintHorizontal_bias="0.571"
+        app:layout_constraintStart_toEndOf="@+id/Nombre_Jugador"
+        app:layout_constraintTop_toBottomOf="@+id/tablero"
+        app:layout_constraintVertical_bias="0.567" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
