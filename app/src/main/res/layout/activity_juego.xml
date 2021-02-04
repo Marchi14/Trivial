@@ -50,8 +50,8 @@
 
     <ImageView
         android:id="@+id/cursor1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
         android:adjustViewBounds="false"
         android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="@+id/tablero"
@@ -64,14 +64,14 @@
 
     <ImageView
         android:id="@+id/cursor2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/tablero"
         app:layout_constraintEnd_toEndOf="@+id/tablero"
-        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintHorizontal_bias="0.457"
         app:layout_constraintStart_toStartOf="@+id/tablero"
         app:layout_constraintTop_toTopOf="@+id/tablero"
-        app:layout_constraintVertical_bias="0.038"
+        app:layout_constraintVertical_bias="0.037"
         app:srcCompat="@drawable/cursor2" />
 
     <ImageView
