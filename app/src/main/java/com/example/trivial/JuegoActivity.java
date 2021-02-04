@@ -55,8 +55,14 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
         nJugador1=findViewById(R.id.Nombre_Jugador);
         nJugador2=findViewById(R.id.n_Jugador2);
         Bundle b=getIntent().getExtras();
-        if (b.getInt("Partida",0)!=0){
 
+        if (b.getInt("Partida",0)!=0){
+            jugador1 = new Jugador(b.getString("player1"),b.getInt("posX"),b.getInt("posY"),b.getBoolean("quesoA"),b.getBoolean("quesoR"),
+            b.getBoolean("quesoAz"),b.getBoolean("quesoM"),b.getBoolean("quesoN"),b.getBoolean("quesoV"),b.getBoolean("turno"));
+            jugador2 = new Jugador(b.getString("player2"),b.getInt("2posX"),b.getInt("2posY"),b.getBoolean("2quesoA"),b.getBoolean("2quesoR"),
+                    b.getBoolean("2quesoAz"),b.getBoolean("2quesoM"),b.getBoolean("2quesoN"),b.getBoolean("2quesoV"),b.getBoolean("2turno"));
+            nJugador1.setText(b.getString("player1"));
+            nJugador2.setText(b.getString("player2"));
         }
 
         else {
@@ -68,16 +74,6 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
             jugador1 = new Jugador(n1);
             jugador1.setTurno(true);
             jugador2 = new Jugador(n2);
-            jugador1.setQuesito_azul(true);
-            jugador1.setQuesito_morado(true);
-            jugador1.setQuesito_naranja(true);
-            jugador1.setQuesito_verde(true);
-            jugador1.setQuesito_rosa(true);
-            jugador2.setQuesito_azul(true);
-            jugador2.setQuesito_amarillo(true);
-            jugador2.setQuesito_naranja(true);
-            jugador2.setQuesito_verde(true);
-            jugador2.setQuesito_rosa(true);
 
             Turno.setText("Turno de "+n1);
         }
