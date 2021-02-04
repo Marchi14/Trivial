@@ -2,9 +2,12 @@ package com.example.trivial;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -62,7 +65,52 @@ public class Historial extends AppCompatActivity {
         list.setAdapter(adapter);
 
 
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //llama el método cargar();
+                cargar();
+            }
 
+        });
+
+
+
+    }
+
+    public void cargar () {
+
+        Sqlite dbHelper = new Sqlite(this);
+        db = dbHelper.getWritableDatabase();
+
+        Intent intent = new Intent(this,JuegoActivity.class);
+        String n1= "pepito";
+        String n2= "pablito";
+        intent.putExtra("player1", n1);
+        intent.putExtra("player2", n2);
+        startActivity(intent);
+
+        /*if(db!=null){
+
+            Cursor c = db.rawQuery("SELECT * FROM Notas ORDER BY Primero DESC LIMIT 5",null);
+            int cantidad = c.getCount();
+            int i=0;
+            String[] arreglo = new String [cantidad];
+
+
+            if(c.moveToFirst()){
+                do{
+
+                    String linea = c.getInt(0)+"                   "+ c.getInt(1)+" Clicks";
+
+                    arreglo[i] = linea;
+
+                    i++;
+                }while(c.moveToNext());
+
+            }
+
+        }*/
 
     }
 }
