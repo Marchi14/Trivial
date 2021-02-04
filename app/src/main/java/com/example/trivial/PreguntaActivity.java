@@ -124,22 +124,22 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
             int rng;
             switch (tema) {
                 case "Historia":
-                    rng = (int) (Math.random() * (5 - 1 + 1) + 1);
+                    rng = (int) (Math.random() * (10 - 1 + 1) + 1);
                     break;
                 case "Geografía":
-                    rng = (int) (Math.random() * (10 - 6 + 1) + 6);
+                    rng = (int) (Math.random() * (20 - 11 + 1) + 11);
                     break;
                 case "Ocio y Deporte":
-                    rng = (int) (Math.random() * (15 - 11 + 1) + 11);
+                    rng = (int) (Math.random() * (30 - 21 + 1) + 21);
                     break;
                 case "Ciencias y naturaleza":
-                    rng = (int) (Math.random() * (20 - 16 + 1) + 16);
+                    rng = (int) (Math.random() * (40 - 31 + 1) + 31);
                     break;
                 case "Arte y Literatura":
-                    rng = (int) (Math.random() * (25 - 21 + 1) + 21);
+                    rng = (int) (Math.random() * (50 - 41 + 1) + 41);
                     break;
                 case "Entretenimiento":
-                    rng = (int) (Math.random() * (30 - 26 + 1) + 26);
+                    rng = (int) (Math.random() * (60 - 51 + 1) + 51);
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + tema);
