@@ -166,8 +166,8 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
         Intent intent = new Intent(this, JuegoActivity.class);
         if (boton.getText().toString().equals(resp_correcta)){
             if (f && nacertadas!=6){
-                Pregunta(f);
                 nacertadas++;
+                Pregunta(f);
             }
             else if (f && nacertadas==6){
                 Intent intent1 = new Intent(this, SplashFinalActivity.class);
