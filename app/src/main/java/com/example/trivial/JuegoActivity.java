@@ -68,6 +68,16 @@ public class JuegoActivity extends AppCompatActivity implements View.OnTouchList
             jugador1 = new Jugador(n1);
             jugador1.setTurno(true);
             jugador2 = new Jugador(n2);
+            jugador1.setQuesito_azul(true);
+            jugador1.setQuesito_morado(true);
+            jugador1.setQuesito_naranja(true);
+            jugador1.setQuesito_verde(true);
+            jugador1.setQuesito_rosa(true);
+            jugador2.setQuesito_azul(true);
+            jugador2.setQuesito_amarillo(true);
+            jugador2.setQuesito_naranja(true);
+            jugador2.setQuesito_verde(true);
+            jugador2.setQuesito_rosa(true);
 
             Turno.setText("Turno de "+n1);
         }

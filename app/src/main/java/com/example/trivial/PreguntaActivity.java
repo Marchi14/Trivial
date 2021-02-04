@@ -24,7 +24,8 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
 
     Jugador jugador1,jugador2;
     TextView pregunta, time;
-    boolean quesito;
+    boolean quesito,f;
+    int nacertadas = 0;
     Button res1,res2,res3,res4;
     Button[] botones = new Button[4];
     String tema;
@@ -49,6 +50,7 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
         jugador2 = (Jugador) bundle.get("jugador 2");
         tema = bundle.getString("Tema");
         quesito = bundle.getBoolean("queso");
+        f = bundle.getBoolean("final");
 
         //timer
         Intent intent = new Intent(this, JuegoActivity.class);
@@ -83,76 +85,64 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
         Sqlite dbHelper = new Sqlite(this);
         db = dbHelper.getWritableDatabase();
 
-        Pregunta(bundle.getBoolean("final"));
+        Pregunta(f);
     }
 
     private void Pregunta(boolean f){
-        if (f){
-            for (int i = 0; i<6; i++){
-                Random rnd = new Random();
-                int rng = rnd.nextInt(6);
-                switch (rng){
-                    case 0:
-                        tema = "HISTORIA";
-                        break;
-                    case 1:
-                        tema = "OCIO Y DEPORTE";
-                        break;
-                    case 2:
-                        tema = "ARTE Y LITERATURA";
-                        break;
-                    case 3:
-                        tema = "GEOGRAFÍA";
-                        break;
-                    case 4:
-                        tema = "ENTRETENIMIENTO";
-                        break;
-                    case 5:
-                        tema = "CIENCIAS Y NATURALEZA";
-                        break;
-                }
-                Cursor c = db.rawQuery("SELECT id_pregunta,enunciado FROM pregunta LIMIT 1" +
-                        " WHERE Tipo = '" + tema + "';", null);
-
-                if (c.moveToFirst()) {
-                    String enunciado = c.getString(1);
-                    pregunta.setText(enunciado);
-                    Respuestas(c.getInt(0));
-                }
+        if (f) {
+            Random rnd = new Random();
+            int rng = rnd.nextInt(6);
+            switch (rng) {
+                case 0:
+                    tema = "Historia";
+                    break;
+                case 1:
+                    tema = "Ocio y Deporte";
+                    break;
+                case 2:
+                    tema = "Arte y Literatura";
+                    break;
+                case 3:
+                    tema = "Geografía";
+                    break;
+                case 4:
+                    tema = "Entretenimiento";
+                    break;
+                case 5:
+                    tema = "Ciencias y naturaleza";
+                    break;
             }
         }
-        else {
-            int rng;
-            switch (tema) {
-                case "Historia":
-                    rng = (int) (Math.random() * (10 - 1 + 1) + 1);
-                    break;
-                case "Geografía":
-                    rng = (int) (Math.random() * (20 - 11 + 1) + 11);
-                    break;
-                case "Ocio y Deporte":
-                    rng = (int) (Math.random() * (30 - 21 + 1) + 21);
-                    break;
-                case "Ciencias y naturaleza":
-                    rng = (int) (Math.random() * (40 - 31 + 1) + 31);
-                    break;
-                case "Arte y Literatura":
-                    rng = (int) (Math.random() * (50 - 41 + 1) + 41);
-                    break;
-                case "Entretenimiento":
-                    rng = (int) (Math.random() * (60 - 51 + 1) + 51);
-                    break;
-                default:
-                    throw new IllegalStateException("Unexpected value: " + tema);
-            }
-            Cursor c = db.rawQuery("SELECT id_pregunta,enunciado FROM pregunta WHERE Tipo = '" + tema.toUpperCase() + "'" +
-                    " AND id_pregunta = " + rng + ";", null);
+        int rng2;
+        switch (tema) {
+            case "Historia":
+                rng2 = (int) (Math.random() * (10 - 1 + 1) + 1);
+                break;
+            case "Geografía":
+                rng2 = (int) (Math.random() * (20 - 11 + 1) + 11);
+                break;
+            case "Ocio y Deporte":
+                rng2 = (int) (Math.random() * (30 - 21 + 1) + 21);
+                break;
+            case "Ciencias y naturaleza":
+                rng2 = (int) (Math.random() * (40 - 31 + 1) + 31);
+                break;
+            case "Arte y Literatura":
+                rng2 = (int) (Math.random() * (50 - 41 + 1) + 41);
+                break;
+            case "Entretenimiento":
+                rng2 = (int) (Math.random() * (60 - 51 + 1) + 51);
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + tema);
+        }
+        Cursor c = db.rawQuery("SELECT id_pregunta,enunciado FROM pregunta WHERE Tipo = '" + tema.toUpperCase() + "'" +
+                " AND id_pregunta = " + rng2 + ";", null);
 
-            if (c.moveToFirst()) {
-                String enunciado = c.getString(1);
-                pregunta.setText(enunciado);
-                Respuestas(c.getInt(0));
-            }
+        if (c.moveToFirst()) {
+            String enunciado = c.getString(1);
+            pregunta.setText(enunciado);
+            Respuestas(c.getInt(0));
         }
     }
 
@@ -175,6 +165,14 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
         time.setVisibility(View.INVISIBLE);
         Intent intent = new Intent(this, JuegoActivity.class);
         if (boton.getText().toString().equals(resp_correcta)){
+            if (f && nacertadas!=6){
+                Pregunta(f);
+                nacertadas++;
+            }
+            else if (f && nacertadas==6){
+                Intent intent1 = new Intent(this, SplashFinalActivity.class);
+                intent1.putExtra("Ganador",jugador1.isTurno() ? jugador1.getNombre() : jugador2.getNombre());
+            }
             boton.setBackgroundColor(Color.GREEN);
             pregunta.setTextColor((Color.parseColor("#11F725")));
             pregunta.setText("CORRECTO");
