@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -171,16 +172,34 @@ public class PreguntaActivity extends AppCompatActivity implements View.OnClickL
     @Override
     public void onClick(View v) {
         Button boton = (Button) v;
+        time.setVisibility(View.INVISIBLE);
         Intent intent = new Intent(this, JuegoActivity.class);
         if (boton.getText().toString().equals(resp_correcta)){
             boton.setBackgroundColor(Color.GREEN);
+            pregunta.setTextColor((Color.parseColor("#11F725")));
+            pregunta.setText("CORRECTO");
             intent.putExtra("acierto",true);
         }
         else{
             boton.setBackgroundColor(Color.RED);
+            pregunta.setTextColor((Color.parseColor("#F72211")));
+            pregunta.setText("INCORRECTO");
             intent.putExtra("acierto",false);
         }
         setResult(RESULT_OK, intent);
-        finish();
+
+        //esperar 2 segundos antes de cerrar para ver las respuestas correctas.
+        new Handler().postDelayed(new Runnable(){
+            public void run(){
+
+                //----------------------------
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                finish();
+                //----------------------------
+
+            }
+        }, 1000); //1000 millisegundos = 1 segundo.
+
     }
 }
